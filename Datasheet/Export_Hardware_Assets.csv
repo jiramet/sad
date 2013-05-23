@@ -1,0 +1,44 @@
+DataSheetJP1	DataSheetMod	Remark	
+Device Type	devicetype	ประเภท	
+User Name	username	ชื่อผู้ใช้	
+Asset	asset	หมายเลขเครื่อง	
+IP Address	ipadd	เลขIP	
+Device Name	devicename	ชื่อUserที่LoginWindows	
+Manufacturer	manufacturer	เครื่องยี่ห้อ	
+Description	description	คำอธิบาย	
+Contract Vendor Name	convena	Contract Vendor Name	
+Contract Date	conda	Contract Date	
+Asset Status	assetstatus	สถานะการใช้งาน  	In use = user ใช้งานอยู่ 
+Planned Asset Status	pas	Planned Asset Status	
+Planned Date	plandate	วันหมดอายุ	
+Last Tracked Date	lasttrackeddate	วันเข้ามา	
+Department	department	แผนก	
+Location	location	สถานที่ตั้ง	
+Account	account	Account	
+E-mail	email	email	
+Phone	phone	phone	
+Registered Date/Time	rdt	Registered Date/Time	
+Last Modified Date/Time	lmd	Last Modified Date/Time	
+Model	model	รุ่นเครื่องคอมพิวเตอร์	
+Serial	serial	serial	
+Processor	processor	processor	
+Total Memory	totalmem	size memory	
+Storage Capacity	storage	storage	
+Free Storage Capacity	freestorage	freestorage	
+Subnet Mask	submask	Subnet Mask	
+MAC Address	macaddress	MacAddress	
+Host Name	hostname	ชื่อเครื่องคอมพิวเตอร์	
+Operating System	opersys	Operating System	
+Display Type	displaytype	ประเภทหน้าจอ	
+Display Size	displaysize	ขนาดหน้าจอ	
+Display Graphic Mode	displaygraphic	กาดจอยี่ห้อ	
+UDID	udid	udid	
+IMEI	imei	imei	
+ICCID	iccid	iccid	
+Contract Phone	conphone	conphone	
+OS	os	ลงwindows version	
+Microsoft Office	msoff	ใช้ Ms Office	
+Microsoft Visio	msvisio	ใช้ Ms Visio	
+Product Key Windows	prokeywin	Product Key Windows	
+Product Key Office	prokeyoff	Product Key Office	
+Product key visio	prokeyvisio	Product key visio	

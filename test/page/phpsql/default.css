@@ -1,0 +1,7 @@
+@CHARSET "UTF-8";
+body { font:13px Tahoma, Geneva, sans-serif; }
+.css-pager a { text-decoration:none; color:#666; background:#F4F4F4; border:1px solid #e0e0e0;
+								 padding:2px 5px; margin:2px; font-weight:700; }
+.css-pager a:hover { text-decoration:none; color:#fff; background:#0A85CB; border:1px solid #3af; 
+										 padding:2px 5px; margin:2px; }
+.current_page { background-color:#0A85CB; border:1px solid #3af; padding:2px 5px; margin:2px; color:#fff; font-weight:700; }

@@ -1,0 +1,1012 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0061)http://www.thaicreate.com/community/php-mysql-pagination.html -->
+<html lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ</title>
+<link rel="icon" href="http://www.thaicreate.com/upload/tutorial/tc.ico" type="image/x-icon">
+
+<link href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/Style.css" rel="stylesheet" type="text/css">
+<link href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/dhtmlXTabbar.css" rel="stylesheet" type="text/css">
+<link href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shCore.css" type="text/css" rel="stylesheet">
+<link href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shThemeDefault.css" type="text/css" rel="stylesheet">
+<meta name="description" content="ตัวอย่างการเขียนแบ่งหน้าข้อมูลด้วย PHP กับ MySQL กรณีที่มีข้อมูลตัวเลขจำนวนหน้าเยอะ  ๆ โดยตัวอย่าง Code นี้จะทำการย่อจำนวนหน้าให้ดูสวยงาม ไม่ยาวจนเกินไป">
+<meta name="verify-v1" content="HajSqMDuE7DEq16BQJOfEC+8lE7A2T+YY4/VqvimHwI=">
+<meta name="msvalidate.01" content="8382BF464564287D955ECA86D88B23B6">
+<!--
+Developer By Weerachai N. (WIN) 
+Contact Us Email : is_php@hotmail.com, Tel : 08-1987-6107 (Update : 30 Jul 2008)
+CopyRight www.ThaiCreate.Com. All Rights Reserved.
+-->
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/cb=gapi.loaded_0" async=""></script><script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/dhtmlXCommon.js"></script> 
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/dhtmlXTabbar.js"></script> 
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/dhtmlXTabbarStart.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxLoadContent.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/jsValidate.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxLoad.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxUserOnline.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxScore.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxDownload.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxSearch.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxCmd.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajaxSendPM.js"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ZeroClipboard.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shCore.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shBrushPhp.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shBrushVb.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shBrushJScript.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shBrushSql.js" type="text/javascript"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/shBrushCSharp.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/jquery.min.js"></script>
+<script>
+	!window.jQuery && document.write('<script src="/jquery-1.4.3.min.js"><\/script>');
+</script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/jquery.mousewheel-3.0.4.pack.js"></script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/jquery.fancybox-1.3.4.css" media="screen">
+
+<script type="text/javascript">
+    SyntaxHighlighter.config.clipboardSwf = '/syntaxhighlight/scripts/clipboard.swf';
+    SyntaxHighlighter.all();
+</script>
+
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/widgets.js" type="text/javascript"></script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/plusone.js" gapi_processed="true"></script>
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/FB.Share" type="text/javascript"></script><link rel="stylesheet" type="text/css" href="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/share-button-css">  
+
+<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ga.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-10173467-1");
+		pageTracker._trackPageview();
+		} catch(err) {}
+</script>
+			
+<script type="text/javascript">
+		$(document).ready(function() {
+					});
+</script>
+
+<script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/restserver.php"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" data-twttr-rendered="true">
+
+
+
+
+<table width="1004" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td width="1226" height="26" colspan="3" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/bgheader.png"><div align="right">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td width="40%" valign="top" style="padding-left:10px"><span class="headertitle">
+                            <div style="padding-left:10px">
+                                <a href="http://www.thaicreate.com/member-profile/uid-017719.html" alt="Point : 0 - Click view profile." title="Point : 0 - Click view profile." style="cursor:hand"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/star3.gif" width="10" height="16" align="absmiddle" border="0"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/star3.gif" width="10" height="16" align="absmiddle" border="0"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/star3.gif" width="10" height="16" align="absmiddle" border="0"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/star3.gif" width="10" height="16" align="absmiddle" border="0"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/star3.gif" width="10" height="16" align="absmiddle" border="0"></a>                <a href="http://www.thaicreate.com/c.php?option=profile" class="headertitle" title="mandmod">
+                mandmod              </a>&nbsp;<img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/useronline.gif" alt="Useronline" width="15" height="15"> <a href="http://www.thaicreate.com/c.php?option=edit-profile" class="headertitle">หน้าหลักสมาชิก</a>&nbsp;&nbsp;<img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/logout.gif" alt="Logout" width="11" height="10">&nbsp;<a href="JavaScript:if(confirm('Do you want to logout?')==true){window.location='/logout.php';}" class="headertitle" title="Logout">ออกจากระบบ</a> 
+			  			  <span style="padding-left:20px"><a href="http://www.thaicreate.com/c.php?option=pm"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/priv_message.gif" alt="กล่องข้อความส่วนตัว" width="32" height="16" border="0" align="absbottom" title="กล่องข้อความส่วนตัว"></a></span>
+			  			  </div>
+                        </span></td>
+            <td width="60%"><div align="right"><span class="white"> <strong>PHP </strong> (Hypertext Preprocessor), <strong>ASP </strong> (Active Server Pages), <strong>ASP.NET, VB.NET, C# </strong> (.Net 1.1, 2.0, 3.5, 4.0)</span></div></td>
+          </tr>
+        </tbody></table>
+    </div></td>
+  </tr>
+  <tr>
+    <td height="137" colspan="3" valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xtcba_01.jpg" style="BACKGROUND-REPEAT: no-repeat;"><div align="right">
+        <table width="100%" height="50" border="0" cellpadding="0" cellspacing="0">
+          <tbody><tr>
+            <td width="21%"><table width="100%" height="117" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td width="4%">&nbsp;</td>
+                  <td width="96%">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td><h2 style="padding-left:10px"><font color="ff6600">Registered :
+				  					   <a href="http://www.thaicreate.com/member-list/level/all/page-0001.html"><font color="ff6600">87,017</font></a>
+					   
+                  </font></h2><font color="ff6600"> </font></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+<iframe src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/likebox(1).htm" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:71px;" allowtransparency="true"></iframe>
+				  				  </td>
+                </tr>
+            </tbody></table></td>
+            <td width="54%" valign="top">
+			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td width="47%"> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/spacer.gif" width="200" height="5"></td>
+                  <td width="53%">
+
+				  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+				
+</td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+
+				  </td>
+                </tr>
+              </tbody></table>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,42,0" id="banner" width="728" height="90">
+       <param name="movie" value="http://asset.fitwhey.com/flash/banner01.swf">
+       <param name="bgcolor" value="#FFFFFF">
+       <param name="quality" value="high">
+	   <param name="wmode" value="transparent">
+       <param name="seamlesstabbing" value="false">
+       <param name="allowscriptaccess" value="samedomain">
+       <embed type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" name="banner" width="728" height="90" src="http://asset.fitwhey.com/flash/banner01.swf" bgcolor="#FFFFFF" quality="high" seamlesstabbing="false" allowscriptaccess="samedomain">
+               <noembed>
+               </noembed>
+       
+</object>
+
+<table width="99%" border="0" cellpadding="0" cellspacing="0">
+                <script language="javascript">
+				function onClickSub()
+				{
+					var q = document.getElementById('q');
+					var s = document.getElementById('s');
+					q.value=s.value;
+					s.value = "";
+				}
+				</script>
+                <form action="http://www.thaicreate.com/search" id="cse_search_box" onsubmit="return onClickSub();"></form>
+                  <tbody><tr>
+                    <td width="343" valign="top">&nbsp;</td>
+
+                    <td width="418" valign="top"><div align="right" style="padding-top:0px">
+                        <input type="hidden" name="cx" value="partner-pub-0639452308651048:mgul3k-tjap">
+                        <input type="hidden" name="cof" value="FORID:10">
+                        <input type="hidden" name="ie" value="UTF-8">
+                        <input type="hidden" name="q" id="q">
+                        <fieldset id="searchgoogle">
+                        
+                        <input type="text" name="s" id="s" value="อยากหาอะไรพิมพ์ตรงนี้ได้เลยจ้า... ^-^" onclick="if(this.value==&#39;อยากหาอะไรพิมพ์ตรงนี้ได้เลยจ้า... ^-^&#39;){this.value=&#39;&#39;;}" onblur="if(this.value==&#39;&#39;){this.value=&#39;อยากหาอะไรพิมพ์ตรงนี้ได้เลยจ้า... ^-^&#39;;}">
+                        <input name="submit" type="submit" class="submit" id="searchsubmit" title="Search" alt="Search" value="">
+                        </fieldset>
+                        <script language="javascript">
+						function onClickSub()
+						{
+						var q = document.getElementById('q');
+						var s = document.getElementById('s');
+						q.value=s.value;
+						s.value = "";
+						}
+					
+						</script>	
+                     
+                    </div></td>
+                  </tr>
+                
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+		
+		
+		
+		
+		
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr>
+            <td style="padding-left: 42px;padding-top: 5px;">                <span class="linkheader">
+                <a href="http://www.thaicreate.com/" title="HOME">HOME</a> &gt; <a href="http://www.thaicreate.com/community.html" title="บทความจากสมาชิก">บทความจากสมาชิก</a> &gt; <strong>PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ</strong>                 </span>
+                            </td>
+          </tr>
+        </tbody></table>
+		
+		
+    </div></td>
+  </tr>
+</tbody></table>
+
+		<table width="1004" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr> 
+    <td width="1004" colspan="3" valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xtcba_02_2.jpg" style="BACKGROUND-REPEAT: no-repeat;"> <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody><tr> 
+          <td width="81%" valign="top"> 
+		  
+<style type="text/css">
+<!--
+.style1x {font-weight: bold}
+-->
+</style>
+
+
+
+
+<table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tbody><tr> 
+    <td><h1> 
+        PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ      </h1></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</tbody></table>
+<div align="center"> 
+  <table width="740" border="0" cellpadding="0" cellspacing="0">
+    <tbody><tr> 
+      <td valign="top"> <div align="center"> 
+        </div>
+        <table width="732" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr> 
+            <td width="2%">&nbsp;</td>
+            <td width="96%">
+						 <div align="center" style="padding-top:5px;padding-left:10px;padding-bottom:10px">
+<script type="text/javascript"><!--
+//google_ad_client = "pub-0639452308651048";
+/* 728x90, Tutorials 1/9/09 */
+//google_ad_slot = "9603738069";
+//google_ad_width = 728;
+//google_ad_height = 90;
+//google_language = 'en';
+//-->
+</script>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-0639452308651048";
+/* 336x280, Tutorials-Banner 6/2/11 */
+google_language = 'en';
+google_ad_slot = "2201474755";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe allowtransparency="true" frameborder="0" height="280" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="336" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+
+    </div>
+			
+			<table width="99%" height="30" border="0" cellpadding="0" cellspacing="1" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/bgsearch.jpg" style="border-color: #600; border-width: 1px 1px 1px 1px; border-style: solid;">
+                          <tbody><tr>
+                            <td width="23%"><h2 align="center" style="padding-top:10px">ลองใช้ค้นหาข้อมูล</h2>
+                            <br></td>
+                            <td width="77%" valign="middle">
+							<script language="javascript">
+							function searchitem()
+							{
+								document.frmSearch.action='http://www.thaicreate.com/search?cx=partner-pub-0639452308651048%3Amgul3k-tjap&cof=FORID%3A10&ie=UTF-8';
+								return true;
+							}
+							</script>							<form name="frmSearch" method="get" style="padding-top:10px" onsubmit="return searchitem();" target="_blank">
+                              	<input name="q" type="text" style="height:30px;width:450px">
+								<input type="hidden" name="cx" value="partner-pub-0639452308651048:mgul3k-tjap">
+								<input type="hidden" name="cof" value="FORID:10">
+								<input type="hidden" name="ie" value="UTF-8">		 &nbsp; &nbsp;					  
+                              <input name="imageField" type="image" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/search.png" width="73" height="20" border="0">
+                                                        </form></td>
+                          </tr>
+                        </tbody></table>
+			<table width="100%" border="0">
+              <tbody><tr>
+                <td>
+                  <div align="left">
+                    <script type="text/javascript"><!--
+google_ad_client = "ca-pub-0639452308651048";
+/* 728x15, Link 2/19/09 */
+google_language = 'en';
+google_ad_slot = "6447051561";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+                                </script>
+                    <script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+                                </script><ins style="display:inline-table;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="aswift_1_anchor" style="display:block;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe allowtransparency="true" frameborder="0" height="15" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="728" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+                </div></td>
+              </tr>
+            </tbody></table>
+			
+						<table width="100%" border="0">
+              <tbody><tr>
+                <td width="51%"><a href="JavaScript:void(0)" onclick="JavaScript:AjaxCmd(&#39;BOOKMARK&#39;,&#39;PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ&#39;,&#39;/community/php-mysql-pagination.html&#39;,null)"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/bookmark.png" alt="Bookmark." width="130" height="31" border="0" title="Bookmark."></a>
+                    <input name="copyclipboard" id="copyclipboard" type="image" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/clipboard.png" width="130" height="31" border="0">                </td>
+              <td width="49%">  			 <table width="340" height="21" border="0" cellpadding="1" cellspacing="1">
+              <tbody><tr>
+                <td width="110">
+							
+							
+<div style="width:95px">  <iframe allowtransparency="true" frameborder="0" scrolling="no" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/tweet_button.1337330192.htm" class="twitter-share-button twitter-count-horizontal" style="width: 110px; height: 20px; " title="Twitter Tweet Button"></iframe>
+</div>
+				</td>
+                <td width="112">
+							
+			<div id="___plusone_0" style="height: 24px; width: 106px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="width: 106px; margin: 0px; border-style: none; height: 24px; position: static; left: 0px; top: 0px; visibility: visible; " tabindex="0" vspace="0" width="100%" id="I1_1337589666289" name="I1_1337589666289" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/fastbutton.htm" title="+1"></iframe></div>
+			
+			
+				</td>
+                <td width="108">
+
+							<a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.thaicreate.com%2Fcommunity%2Fphp-mysql-pagination.html&t=PHP%20MySQL%20Pagination%20%E0%B8%97%E0%B8%B3%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%20PHP%20%E0%B8%81%E0%B8%B1%E0%B8%9A%20MySQL%20%E0%B8%A2%E0%B9%88%E0%B8%AD%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%20%E0%B9%83%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B8%B5%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%A2%E0%B8%AD%E0%B8%B0%20%E0%B9%86&src=sp" share_url="http://www.thaicreate.com/community/php-mysql-pagination.html" rel="nofollow" style="text-decoration: none; "><span class="fb_share_size_Small "><span class="FBConnectButton FBConnectButton_Small" style="cursor:pointer;"><span class="FBConnectButton_Text">Share</span></span><span class="fb_share_count_nub_right "></span><span class="fb_share_count  fb_share_count_right"><span class="fb_share_count_inner">18</span></span></span></a>  
+				</td>
+              </tr>
+            </tbody></table></td>
+              </tr>
+            </tbody></table>
+			<font class="detailTutorial">
+  <strong>PHP MySQL Pagination</strong> ทำแหบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ ตัวอย่างการเขียนแบ่งหน้าข้อมูลด้วย PHP กับ MySQL กรณีที่มีข้อมูลตัวเลขจำนวนหน้าเยอะ  ๆ โดยตัวอย่าง Code นี้จะทำการย่อจำนวนหน้าให้ดูสวยงาม ไม่ยาวจนเกินไป<br>
+<br>
+<u><strong>จากบทความ</strong></u><br>
+<strong><u>Go to</u> : <a href="http://www.thaicreate.com/php/php-mysql-list-record-paging.html" target="blank" title="PHP MySQL List Record Paging/Pagination">PHP MySQL List Record Paging/Pagination</a></strong><br>
+<br>
+<img class="resize" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/20110124144848.jpg" alt="PHP MySQL Patination" title="PHP MySQL Patination" border="0" style="border:4px solid #f8f8f8;">   <br>
+<br>
+ตัวอย่างการแบ่งตัวเลขหน้า<br>
+<br>
+<strong>Database</strong><br>
+<div class="code"><font class="fontcode">CREATE TABLE `customer` (<br>
+  `CustomerID` varchar(4) NOT NULL,<br>
+  `Name` varchar(50) NOT NULL,<br>
+  `Email` varchar(50) NOT NULL,<br>
+  `CountryCode` varchar(2) NOT NULL,<br>
+  `Budget` double NOT NULL,<br>
+  `Used` double NOT NULL,<br>
+  PRIMARY KEY  (`CustomerID`),<br>
+  UNIQUE KEY `Email` (`Email`),<br>
+  KEY `CountryCode` (`CountryCode`)<br>
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;<br>
+<br>
+-- <br>
+-- Dumping data for table `customer`<br>
+-- <br>
+<br>
+INSERT INTO `customer` VALUES ('C001', 'Customer 001 ', 'mail001@thaicreate.com', 'US', 0, 0);<br>
+INSERT INTO `customer` VALUES ('C002', 'Customer 002 ', 'mail002@thaicreate.com', 'US', 0, 0);<br>
+INSERT INTO `customer` VALUES ('C003', 'Customer 003 ', 'mail003@thaicreate.com', 'US', 0, 0);<br>
+INSERT INTO `customer` VALUES ('C004', 'Customer 004 ', 'mail004@thaicreate.com', 'US', 0, 0);<br>
+INSERT INTO `customer` VALUES ('C005', 'Customer 005 ', 'mail005@thaicreate.com', 'US', 0, 0);</font></div><br>
+<br>
+Code ภาษา PHP<br>
+<br>
+<strong>Code (PHP)</strong><br>
+<font class="css_code"><div id="highlighter_587154" class="syntaxhighlighter "><div class="bar                                                                                                                                                         show"><div class="toolbar"><a href="http://www.thaicreate.com/community/php-mysql-pagination.html#viewSource" title="view source" style="width: 16px; height: 16px; " class="item viewSource">view source</a><div class="item copyToClipboard"><embed width="16" height="16" id="highlighter_587154_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_587154" menu="false" src="/syntaxhighlight/scripts/clipboard.swf"></div><a href="http://www.thaicreate.com/community/php-mysql-pagination.html#printSource" title="print" style="width: 16px; height: 16px; " class="item printSource">print</a><a href="http://www.thaicreate.com/community/php-mysql-pagination.html#about" title="?" style="width: 16px; height: 16px; " class="item about">?</a></div></div><div class="lines"><div class="line alt1"><code class="number">001.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">002.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">class</code> <code class="plain">Paginator{</code></span></span></div><div class="line alt1"><code class="number">003.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$items_per_page</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">004.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$items_total</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">005.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$current_page</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">006.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$num_pages</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">007.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$mid_range</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">008.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$low</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">009.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$high</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">010.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$limit</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">011.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$return</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">012.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$default_ipp</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">013.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$querystring</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">014.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">var</code> <code class="variable">$url_next</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">015.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">016.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">function</code> <code class="plain">Paginator()</code></span></span></div><div class="line alt1"><code class="number">017.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">018.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;current_page = 1;</code></span></span></div><div class="line alt1"><code class="number">019.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;mid_range = 7;</code></span></span></div><div class="line alt2"><code class="number">020.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;items_per_page = </code><code class="variable">$this</code><code class="plain">-&gt;default_ipp;</code></span></span></div><div class="line alt1"><code class="number">021.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;url_next = </code><code class="variable">$this</code><code class="plain">-&gt;url_next;</code></span></span></div><div class="line alt2"><code class="number">022.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">023.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">function</code> <code class="plain">paginate()</code></span></span></div><div class="line alt2"><code class="number">024.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">025.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">026.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">if</code><code class="plain">(!</code><code class="functions">is_numeric</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;items_per_page) OR </code><code class="variable">$this</code><code class="plain">-&gt;items_per_page &lt;= 0) </code><code class="variable">$this</code><code class="plain">-&gt;items_per_page = </code><code class="variable">$this</code><code class="plain">-&gt;default_ipp;</code></span></span></div><div class="line alt1"><code class="number">027.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;num_pages = </code><code class="functions">ceil</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;items_total/</code><code class="variable">$this</code><code class="plain">-&gt;items_per_page);</code></span></span></div><div class="line alt2"><code class="number">028.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">029.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;current_page &lt; 1 Or !</code><code class="functions">is_numeric</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;current_page)) </code><code class="variable">$this</code><code class="plain">-&gt;current_page = 1;</code></span></span></div><div class="line alt2"><code class="number">030.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;current_page &gt; </code><code class="variable">$this</code><code class="plain">-&gt;num_pages) </code><code class="variable">$this</code><code class="plain">-&gt;current_page = </code><code class="variable">$this</code><code class="plain">-&gt;num_pages;</code></span></span></div><div class="line alt1"><code class="number">031.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$prev_page</code> <code class="plain">= </code><code class="variable">$this</code><code class="plain">-&gt;current_page-1;</code></span></span></div><div class="line alt2"><code class="number">032.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$next_page</code> <code class="plain">= </code><code class="variable">$this</code><code class="plain">-&gt;current_page+1;</code></span></span></div><div class="line alt1"><code class="number">033.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">034.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">035.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;num_pages &gt; 10)</code></span></span></div><div class="line alt2"><code class="number">036.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">037.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">= (</code><code class="variable">$this</code><code class="plain">-&gt;current_page != 1 And </code><code class="variable">$this</code><code class="plain">-&gt;items_total &gt;= 10) ? </code><code class="string">"&lt;a class=\"paginate\" href=\""</code><code class="plain">.</code><code class="variable">$this</code><code class="plain">-&gt;url_next.</code><code class="variable">$this</code><code class="plain">-&gt;</code><code class="variable">$prev_page</code><code class="plain">.</code><code class="string">"\"&gt;&amp;laquo; Previous&lt;/a&gt; "</code><code class="plain">:</code><code class="string">"&lt;span class=\"inactive\" href=\"#\"&gt;&amp;laquo; Previous&lt;/span&gt; "</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">038.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">039.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="variable">$this</code><code class="plain">-&gt;start_range = </code><code class="variable">$this</code><code class="plain">-&gt;current_page - </code><code class="functions">floor</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;mid_range/2);</code></span></span></div><div class="line alt2"><code class="number">040.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="variable">$this</code><code class="plain">-&gt;end_range = </code><code class="variable">$this</code><code class="plain">-&gt;current_page + </code><code class="functions">floor</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;mid_range/2);</code></span></span></div><div class="line alt1"><code class="number">041.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">042.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;start_range &lt;= 0)</code></span></span></div><div class="line alt1"><code class="number">043.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">044.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="variable">$this</code><code class="plain">-&gt;end_range += </code><code class="functions">abs</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;start_range)+1;</code></span></span></div><div class="line alt1"><code class="number">045.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="variable">$this</code><code class="plain">-&gt;start_range = 1;</code></span></span></div><div class="line alt2"><code class="number">046.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">047.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;end_range &gt; </code><code class="variable">$this</code><code class="plain">-&gt;num_pages)</code></span></span></div><div class="line alt2"><code class="number">048.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">049.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="variable">$this</code><code class="plain">-&gt;start_range -= </code><code class="variable">$this</code><code class="plain">-&gt;end_range-</code><code class="variable">$this</code><code class="plain">-&gt;num_pages;</code></span></span></div><div class="line alt2"><code class="number">050.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="variable">$this</code><code class="plain">-&gt;end_range = </code><code class="variable">$this</code><code class="plain">-&gt;num_pages;</code></span></span></div><div class="line alt1"><code class="number">051.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">052.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="variable">$this</code><code class="plain">-&gt;range = range(</code><code class="variable">$this</code><code class="plain">-&gt;start_range,</code><code class="variable">$this</code><code class="plain">-&gt;end_range);</code></span></span></div><div class="line alt1"><code class="number">053.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">054.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="keyword">for</code><code class="plain">(</code><code class="variable">$i</code><code class="plain">=1;</code><code class="variable">$i</code><code class="plain">&lt;=</code><code class="variable">$this</code><code class="plain">-&gt;num_pages;</code><code class="variable">$i</code><code class="plain">++)</code></span></span></div><div class="line alt1"><code class="number">055.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">056.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;range[0] &gt; 2 And </code><code class="variable">$i</code> <code class="plain">== </code><code class="variable">$this</code><code class="plain">-&gt;range[0]) </code><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">.= </code><code class="string">" ... "</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">057.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$i</code><code class="plain">==1 Or </code><code class="variable">$i</code><code class="plain">==</code><code class="variable">$this</code><code class="plain">-&gt;num_pages Or in_array(</code><code class="variable">$i</code><code class="plain">,</code><code class="variable">$this</code><code class="plain">-&gt;range))</code></span></span></div><div class="line alt2"><code class="number">058.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">059.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 180px !important;"><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">.= (</code><code class="variable">$i</code> <code class="plain">== </code><code class="variable">$this</code><code class="plain">-&gt;current_page And </code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">'Page'</code><code class="plain">] != </code><code class="string">'All'</code><code class="plain">) ? </code><code class="string">"&lt;a title=\"Go to page $i of $this-&gt;num_pages\" class=\"current\" href=\"#\"&gt;$i&lt;/a&gt; "</code><code class="plain">:</code><code class="string">"&lt;a class=\"paginate\" title=\"Go to page $i of $this-&gt;num_pages\" href=\""</code><code class="plain">.</code><code class="variable">$this</code><code class="plain">-&gt;url_next.</code><code class="variable">$i</code><code class="plain">.</code><code class="string">"\"&gt;$i&lt;/a&gt; "</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">060.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">061.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$this</code><code class="plain">-&gt;range[</code><code class="variable">$this</code><code class="plain">-&gt;mid_range-1] &lt; </code><code class="variable">$this</code><code class="plain">-&gt;num_pages-1 And </code><code class="variable">$i</code> <code class="plain">== </code><code class="variable">$this</code><code class="plain">-&gt;range[</code><code class="variable">$this</code><code class="plain">-&gt;mid_range-1]) </code><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">.= </code><code class="string">" ... "</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">062.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">063.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">.= ((</code><code class="variable">$this</code><code class="plain">-&gt;current_page != </code><code class="variable">$this</code><code class="plain">-&gt;num_pages And </code><code class="variable">$this</code><code class="plain">-&gt;items_total &gt;= 10) And (</code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">'Page'</code><code class="plain">] != </code><code class="string">'All'</code><code class="plain">)) ? </code><code class="string">"&lt;a class=\"paginate\" href=\""</code><code class="plain">.</code><code class="variable">$this</code><code class="plain">-&gt;url_next.</code><code class="variable">$next_page</code><code class="plain">.</code><code class="string">"\"&gt;Next &amp;raquo;&lt;/a&gt;\n"</code><code class="plain">:</code><code class="string">"&lt;span class=\"inactive\" href=\"#\"&gt;&amp;raquo; Next&lt;/span&gt;\n"</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">064.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">065.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">else</code></span></span></div><div class="line alt2"><code class="number">066.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">067.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="keyword">for</code><code class="plain">(</code><code class="variable">$i</code><code class="plain">=1;</code><code class="variable">$i</code><code class="plain">&lt;=</code><code class="variable">$this</code><code class="plain">-&gt;num_pages;</code><code class="variable">$i</code><code class="plain">++)</code></span></span></div><div class="line alt2"><code class="number">068.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">069.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 144px !important;"><code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code> <code class="plain">.= (</code><code class="variable">$i</code> <code class="plain">== </code><code class="variable">$this</code><code class="plain">-&gt;current_page) ? </code><code class="string">"&lt;a class=\"current\" href=\"#\"&gt;$i&lt;/a&gt; "</code><code class="plain">:</code><code class="string">"&lt;a class=\"paginate\" href=\""</code><code class="plain">.</code><code class="variable">$this</code><code class="plain">-&gt;url_next.</code><code class="variable">$i</code><code class="plain">.</code><code class="string">"\"&gt;$i&lt;/a&gt; "</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">070.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 108px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">071.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">072.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;low = (</code><code class="variable">$this</code><code class="plain">-&gt;current_page-1) * </code><code class="variable">$this</code><code class="plain">-&gt;items_per_page;</code></span></span></div><div class="line alt1"><code class="number">073.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;high = (</code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">'ipp'</code><code class="plain">] == </code><code class="string">'All'</code><code class="plain">) ? </code><code class="variable">$this</code><code class="plain">-&gt;items_total:(</code><code class="variable">$this</code><code class="plain">-&gt;current_page * </code><code class="variable">$this</code><code class="plain">-&gt;items_per_page)-1;</code></span></span></div><div class="line alt2"><code class="number">074.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="variable">$this</code><code class="plain">-&gt;limit = (</code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">'ipp'</code><code class="plain">] == </code><code class="string">'All'</code><code class="plain">) ? </code><code class="string">""</code><code class="plain">:</code><code class="string">" LIMIT $this-&gt;low,$this-&gt;items_per_page"</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">075.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">076.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">077.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="keyword">function</code> <code class="plain">display_pages()</code></span></span></div><div class="line alt2"><code class="number">078.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">079.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="keyword">return</code> <code class="variable">$this</code><code class="plain">-&gt;</code><code class="keyword">return</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">080.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">081.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">082.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;</code></span></span></div><div class="line alt1"><code class="number">083.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;html&gt;</code></span></span></div><div class="line alt2"><code class="number">084.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;head&gt;</code></span></span></div><div class="line alt1"><code class="number">085.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;title&gt;ThaiCreate.Com PHP &amp; MySQL Tutorial&lt;/title&gt;</code></span></span></div><div class="line alt2"><code class="number">086.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;/head&gt;</code></span></span></div><div class="line alt1"><code class="number">087.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;style type=</code><code class="string">"text/css"</code><code class="plain">&gt; </code></span></span></div><div class="line alt2"><code class="number">088.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;!--</code></span></span></div><div class="line alt1"><code class="number">089.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">.paginate {</code></span></span></div><div class="line alt2"><code class="number">090.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">font-family: Arial, Helvetica, sans-serif;</code></span></span></div><div class="line alt1"><code class="number">091.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">font-size: .7em;</code></span></span></div><div class="line alt2"><code class="number">092.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">093.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">a.paginate {</code></span></span></div><div class="line alt2"><code class="number">094.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">border: 1px solid #000080;</code></span></span></div><div class="line alt1"><code class="number">095.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">padding: 2px 6px 2px 6px;</code></span></span></div><div class="line alt2"><code class="number">096.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">text-decoration: none;</code></span></span></div><div class="line alt1"><code class="number">097.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">color: #000080;</code></span></span></div><div class="line alt2"><code class="number">098.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">099.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">h2 {</code></span></span></div><div class="line alt2"><code class="number">100.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">font-size: 12pt;</code></span></span></div><div class="line alt1"><code class="number">101.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">color: #003366;</code></span></span></div><div class="line alt2"><code class="number">102.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">103.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">104.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 81px !important;"><code class="plain">h2 {</code></span></span></div><div class="line alt1"><code class="number">105.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">line-height: 1.2em;</code></span></span></div><div class="line alt2"><code class="number">106.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">letter-spacing:-1px;</code></span></span></div><div class="line alt1"><code class="number">107.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">margin: 0;</code></span></span></div><div class="line alt2"><code class="number">108.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">padding: 0;</code></span></span></div><div class="line alt1"><code class="number">109.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">text-align: left;</code></span></span></div><div class="line alt2"><code class="number">110.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 72px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">111.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">a.paginate:hover {</code></span></span></div><div class="line alt2"><code class="number">112.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">background-color: #000080;</code></span></span></div><div class="line alt1"><code class="number">113.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">color: #FFF;</code></span></span></div><div class="line alt2"><code class="number">114.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">text-decoration: underline;</code></span></span></div><div class="line alt1"><code class="number">115.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">116.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">a.current {</code></span></span></div><div class="line alt1"><code class="number">117.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">border: 1px solid #000080;</code></span></span></div><div class="line alt2"><code class="number">118.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">font: bold .7em Arial,Helvetica,sans-serif;</code></span></span></div><div class="line alt1"><code class="number">119.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">padding: 2px 6px 2px 6px;</code></span></span></div><div class="line alt2"><code class="number">120.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">cursor: </code><code class="keyword">default</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">121.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">background:#000080;</code></span></span></div><div class="line alt2"><code class="number">122.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">color: #FFF;</code></span></span></div><div class="line alt1"><code class="number">123.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">text-decoration: none;</code></span></span></div><div class="line alt2"><code class="number">124.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">125.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">span.inactive {</code></span></span></div><div class="line alt2"><code class="number">126.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">border: 1px solid #999;</code></span></span></div><div class="line alt1"><code class="number">127.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">font-family: Arial, Helvetica, sans-serif;</code></span></span></div><div class="line alt2"><code class="number">128.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">font-size: .7em;</code></span></span></div><div class="line alt1"><code class="number">129.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">padding: 2px 6px 2px 6px;</code></span></span></div><div class="line alt2"><code class="number">130.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">color: #999;</code></span></span></div><div class="line alt1"><code class="number">131.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">cursor: </code><code class="keyword">default</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">132.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">133.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">--&gt;</code></span></span></div><div class="line alt2"><code class="number">134.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;/style&gt;</code></span></span></div><div class="line alt1"><code class="number">135.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">136.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;body&gt;</code></span></span></div><div class="line alt1"><code class="number">137.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">138.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">139.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$objConnect</code> <code class="plain">= mysql_connect(</code><code class="string">"localhost"</code><code class="plain">,</code><code class="string">"root"</code><code class="plain">,</code><code class="string">"root"</code><code class="plain">) </code><code class="keyword">or</code> <code class="keyword">die</code><code class="plain">(</code><code class="string">"Error Connect to Database"</code><code class="plain">);</code></span></span></div><div class="line alt2"><code class="number">140.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$objDB</code> <code class="plain">= mysql_select_db(</code><code class="string">"mydatabase"</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">141.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$strSQL</code> <code class="plain">= </code><code class="string">"SELECT * FROM customer "</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">142.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$objQuery</code> <code class="plain">= mysql_query(</code><code class="variable">$strSQL</code><code class="plain">) </code><code class="keyword">or</code> <code class="keyword">die</code> <code class="plain">(</code><code class="string">"Error Query ["</code><code class="plain">.</code><code class="variable">$strSQL</code><code class="plain">.</code><code class="string">"]"</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">143.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Num_Rows</code> <code class="plain">= mysql_num_rows(</code><code class="variable">$objQuery</code><code class="plain">);</code></span></span></div><div class="line alt2"><code class="number">144.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">145.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Per_Page</code> <code class="plain">= 10;&nbsp;&nbsp; </code><code class="comments">// Per Page</code></span></span></div><div class="line alt2"><code class="number">146.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">147.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Page</code> <code class="plain">= </code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">"Page"</code><code class="plain">];</code></span></span></div><div class="line alt2"><code class="number">148.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">if</code><code class="plain">(!</code><code class="variable">$_GET</code><code class="plain">[</code><code class="string">"Page"</code><code class="plain">])</code></span></span></div><div class="line alt1"><code class="number">149.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">150.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="variable">$Page</code><code class="plain">=1;</code></span></span></div><div class="line alt1"><code class="number">151.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">152.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">153.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Prev_Page</code> <code class="plain">= </code><code class="variable">$Page</code><code class="plain">-1;</code></span></span></div><div class="line alt2"><code class="number">154.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Next_Page</code> <code class="plain">= </code><code class="variable">$Page</code><code class="plain">+1;</code></span></span></div><div class="line alt1"><code class="number">155.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">156.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$Page_Start</code> <code class="plain">= ((</code><code class="variable">$Per_Page</code><code class="plain">*</code><code class="variable">$Page</code><code class="plain">)-</code><code class="variable">$Per_Page</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">157.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">if</code><code class="plain">(</code><code class="variable">$Num_Rows</code><code class="plain">&lt;=</code><code class="variable">$Per_Page</code><code class="plain">)</code></span></span></div><div class="line alt2"><code class="number">158.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">159.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="variable">$Num_Pages</code> <code class="plain">=1;</code></span></span></div><div class="line alt2"><code class="number">160.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">161.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">else</code> <code class="keyword">if</code><code class="plain">((</code><code class="variable">$Num_Rows</code> <code class="plain">% </code><code class="variable">$Per_Page</code><code class="plain">)==0)</code></span></span></div><div class="line alt2"><code class="number">162.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">163.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="variable">$Num_Pages</code> <code class="plain">=(</code><code class="variable">$Num_Rows</code><code class="plain">/</code><code class="variable">$Per_Page</code><code class="plain">) ;</code></span></span></div><div class="line alt2"><code class="number">164.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">165.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">else</code></span></span></div><div class="line alt2"><code class="number">166.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">{</code></span></span></div><div class="line alt1"><code class="number">167.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="variable">$Num_Pages</code> <code class="plain">=(</code><code class="variable">$Num_Rows</code><code class="plain">/</code><code class="variable">$Per_Page</code><code class="plain">)+1;</code></span></span></div><div class="line alt2"><code class="number">168.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="variable">$Num_Pages</code> <code class="plain">= (int)</code><code class="variable">$Num_Pages</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">169.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt2"><code class="number">170.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">171.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$strSQL</code> <code class="plain">.=</code><code class="string">" order&nbsp; by CustomerID ASC LIMIT $Page_Start , $Per_Page"</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">172.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$objQuery</code>&nbsp; <code class="plain">= mysql_query(</code><code class="variable">$strSQL</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">173.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;</code></span></span></div><div class="line alt2"><code class="number">174.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;table width=</code><code class="string">"600"</code> <code class="plain">border=</code><code class="string">"1"</code><code class="plain">&gt;</code></span></span></div><div class="line alt1"><code class="number">175.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 18px !important;"><code class="plain">&lt;tr&gt;</code></span></span></div><div class="line alt2"><code class="number">176.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"91"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;CustomerID &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt1"><code class="number">177.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"98"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;Name &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt2"><code class="number">178.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"198"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;Email &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt1"><code class="number">179.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"97"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;CountryCode &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt2"><code class="number">180.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"59"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;Budget &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt1"><code class="number">181.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;th width=</code><code class="string">"71"</code><code class="plain">&gt; &lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;Used &lt;/div&gt;&lt;/th&gt;</code></span></span></div><div class="line alt2"><code class="number">182.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 18px !important;"><code class="plain">&lt;/tr&gt;</code></span></span></div><div class="line alt1"><code class="number">183.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">184.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="keyword">while</code><code class="plain">(</code><code class="variable">$objResult</code> <code class="plain">= mysql_fetch_array(</code><code class="variable">$objQuery</code><code class="plain">))</code></span></span></div><div class="line alt1"><code class="number">185.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">{</code></span></span></div><div class="line alt2"><code class="number">186.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;</code></span></span></div><div class="line alt1"><code class="number">187.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 18px !important;"><code class="plain">&lt;tr&gt;</code></span></span></div><div class="line alt2"><code class="number">188.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td&gt;&lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"CustomerID"</code><code class="plain">];?&gt;&lt;/div&gt;&lt;/td&gt;</code></span></span></div><div class="line alt1"><code class="number">189.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"Name"</code><code class="plain">];?&gt;&lt;/td&gt;</code></span></span></div><div class="line alt2"><code class="number">190.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"Email"</code><code class="plain">];?&gt;&lt;/td&gt;</code></span></span></div><div class="line alt1"><code class="number">191.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td&gt;&lt;div align=</code><code class="string">"center"</code><code class="plain">&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"CountryCode"</code><code class="plain">];?&gt;&lt;/div&gt;&lt;/td&gt;</code></span></span></div><div class="line alt2"><code class="number">192.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td align=</code><code class="string">"right"</code><code class="plain">&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"Budget"</code><code class="plain">];?&gt;&lt;/td&gt;</code></span></span></div><div class="line alt1"><code class="number">193.</code><span class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><span class="block" style="margin-left: 36px !important;"><code class="plain">&lt;td align=</code><code class="string">"right"</code><code class="plain">&gt;&lt;?=</code><code class="variable">$objResult</code><code class="plain">[</code><code class="string">"Used"</code><code class="plain">];?&gt;&lt;/td&gt;</code></span></span></div><div class="line alt2"><code class="number">194.</code><span class="content"><code class="spaces">&nbsp;&nbsp;</code><span class="block" style="margin-left: 18px !important;"><code class="plain">&lt;/tr&gt;</code></span></span></div><div class="line alt1"><code class="number">195.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">196.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">}</code></span></span></div><div class="line alt1"><code class="number">197.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;</code></span></span></div><div class="line alt2"><code class="number">198.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;/table&gt;</code></span></span></div><div class="line alt1"><code class="number">199.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">200.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;br&gt;</code></span></span></div><div class="line alt1"><code class="number">201.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">Total &lt;?= </code><code class="variable">$Num_Rows</code><code class="plain">;?&gt; Record </code></span></span></div><div class="line alt2"><code class="number">202.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">203.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">204.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">205.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code> <code class="plain">= </code><code class="keyword">new</code> <code class="plain">Paginator;</code></span></span></div><div class="line alt2"><code class="number">206.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;items_total = </code><code class="variable">$Num_Rows</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">207.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;mid_range = 10;</code></span></span></div><div class="line alt2"><code class="number">208.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;current_page = </code><code class="variable">$Page</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">209.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;default_ipp = </code><code class="variable">$Per_Page</code><code class="plain">;</code></span></span></div><div class="line alt2"><code class="number">210.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;url_next = </code><code class="variable">$_SERVER</code><code class="plain">[</code><code class="string">"PHP_SELF"</code><code class="plain">].</code><code class="string">"?QueryString=value&amp;Page="</code><code class="plain">;</code></span></span></div><div class="line alt1"><code class="number">211.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">212.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="variable">$pages</code><code class="plain">-&gt;paginate();</code></span></span></div><div class="line alt1"><code class="number">213.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt2"><code class="number">214.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="functions">echo</code> <code class="variable">$pages</code><code class="plain">-&gt;display_pages()</code></span></span></div><div class="line alt1"><code class="number">215.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </code></span></span></div><div class="line alt2"><code class="number">216.</code><span class="content"><span class="block" style="margin-left: 0px !important;">&nbsp;</span></span></div><div class="line alt1"><code class="number">217.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;?</code></span></span></div><div class="line alt2"><code class="number">218.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">mysql_close(</code><code class="variable">$objConnect</code><code class="plain">);</code></span></span></div><div class="line alt1"><code class="number">219.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">?&gt;</code></span></span></div><div class="line alt2"><code class="number">220.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;/body&gt;</code></span></span></div><div class="line alt1"><code class="number">221.</code><span class="content"><span class="block" style="margin-left: 0px !important;"><code class="plain">&lt;/html&gt;</code></span></span></div></div></div></font><br>
+<br>
+<br>
+ตัวอย่างนี้อาจจะยังไม่สมบูรณ์ ถ้านำไปใช้ยังไงอาจจะต้องปรับใช้กันบ้างนิดหน่อยครับ<br>
+<br>
+<u><strong>Screenshot</strong></u><br>
+<br>
+<img class="resize" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/20110124144848.jpg" alt="PHP MySQL Patination" title="PHP MySQL Patination" border="0" style="border:4px solid #f8f8f8;">      
+		      </font>    
+                <br>
+    
+                            <br>			<br>
+              			 <table width="340" height="21" border="0" cellpadding="1" cellspacing="1">
+              <tbody><tr>
+                <td width="110">
+							
+							
+<div style="width:95px">  <iframe allowtransparency="true" frameborder="0" scrolling="no" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/tweet_button.1337330192(1).htm" class="twitter-share-button twitter-count-horizontal" style="width: 110px; height: 20px; " title="Twitter Tweet Button"></iframe>
+</div>
+				</td>
+                <td width="112">
+							
+			<div id="___plusone_1" style="height: 24px; width: 106px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; background-position: initial initial; background-repeat: initial initial; "><iframe allowtransparency="true" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="width: 106px; margin: 0px; border-style: none; height: 24px; position: static; left: 0px; top: 0px; visibility: visible; " tabindex="0" vspace="0" width="100%" id="I2_1337589666297" name="I2_1337589666297" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/fastbutton(1).htm" title="+1"></iframe></div>
+			
+			
+				</td>
+                <td width="108">
+
+							<a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.thaicreate.com%2Fcommunity%2Fphp-mysql-pagination.html&t=PHP%20MySQL%20Pagination%20%E0%B8%97%E0%B8%B3%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2%20PHP%20%E0%B8%81%E0%B8%B1%E0%B8%9A%20MySQL%20%E0%B8%A2%E0%B9%88%E0%B8%AD%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%20%E0%B9%83%E0%B8%99%E0%B8%81%E0%B8%A3%E0%B8%93%E0%B8%B5%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A1%E0%B8%B5%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%A2%E0%B8%AD%E0%B8%B0%20%E0%B9%86&src=sp" share_url="http://www.thaicreate.com/community/php-mysql-pagination.html" rel="nofollow" style="text-decoration: none; "><span class="fb_share_size_Small "><span class="FBConnectButton FBConnectButton_Small" style="cursor:pointer;"><span class="FBConnectButton_Text">Share</span></span><span class="fb_share_count_nub_right "></span><span class="fb_share_count  fb_share_count_right"><span class="fb_share_count_inner">18</span></span></span></a>  
+				</td>
+              </tr>
+            </tbody></table>            <br>
+
+			<script type="text/javascript"><!--
+google_ad_client = "pub-0639452308651048";
+/* 336x280, Tuotrials 1/14/11 */
+google_ad_slot = "3555285365";
+google_ad_width = 336;
+google_ad_height = 280;
+google_language = 'en';
+//-->
+</script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_2_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe allowtransparency="true" frameborder="0" height="280" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="336" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</td>
+          </tr>
+        </tbody></table>
+
+
+          <br>
+          <table width="728" height="152" border="0" align="center">
+            <tbody><tr>
+              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/screen-detail.jpg"><table width="100%" border="0" cellpadding="2" cellspacing="2">
+                  <tbody><tr>
+                    <td colspan="3" height="5"></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>By : </strong></td>
+                    <td>
+                      <a href="http://www.thaicreate.com/member-profile/uid-000001.html" title="View profile." alt="View profile." target="_blank">
+                      mr.win	
+                    </a></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>Article : </strong></td>
+                    <td>บทความเป็นการเขียนโดยสมาชิก หากมีปัญหาเรื่องลิขสิทธิ์ กรุณาแจ้งให้ทาง webmaster ทราบด้วยครับ </td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>Score Rate : </strong></td>
+                    <td><strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"></strong></td>
+                  </tr>
+                  <tr>
+                    <td width="3%">&nbsp;</td>
+                    <td width="22%"><strong>Create Date : </strong></td>
+                    <td>2011-01-24</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>View : </strong></td>
+                    <td>
+                      11,149                    </td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><strong>Download : </strong></td>
+                    <td>
+                       No files                    </td>
+                  </tr>
+              </tbody></table></td>
+            </tr>
+          </tbody></table>
+		  <table width="100%" border="0">
+            <tbody><tr>
+              <td>
+                <div align="left">
+                  <script type="text/javascript"><!--
+google_ad_client = "ca-pub-0639452308651048";
+/* 728x15, Link 2/19/09 */
+google_language = 'en';
+google_ad_slot = "6447051561";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+                                </script>
+                  <script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+                                </script><ins style="display:inline-table;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="aswift_3_anchor" style="display:block;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe allowtransparency="true" frameborder="0" height="15" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="728" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+              </div></td>
+            </tr>
+          </tbody></table>		  <!--
+          <table width="100%"  border="0" cellpadding="8" cellspacing="2">
+            <tr>
+              <td width="11%"><div align="center"><span class="style1x">Sponsor </span></div></td>
+              <td width="13%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-Apple/Apple-Pages-0001.html" target="_blank" class="tagSeo" title="Apple Desktops">Apple Desktops</a></div></td>
+              <td width="18%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-eMachines/eMachines-Pages-0001.html" target="_blank" class="tagSeo" title="eMachines Desktops">eMachines Desktops</a></div></td>
+              <td width="11%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-HP/HP-Pages-0001.html" target="_blank" class="tagSeo" title="HP Desktops">HP Desktops</a></div></td>
+              <td width="16%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-Lenovo/Lenovo-Pages-0001.html" target="_blank" class="tagSeo" title="Lenovo Desktops">Lenovo Desktops</a></div></td>
+              <td width="15%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-Compaq/Compaq-Pages-0001.html" target="_blank" class="tagSeo" title="Compaq Desktops">Compaq Desktops</a></div></td>
+              <td width="16%"><div align="center"><a href="http://www.bestpccomputerdesktopcheapprice.com/Desktops-Category/Desktops-Gateway/Gateway-Pages-0001.html" target="_blank" class="tagSeo" title="Gateway Desktops">Gateway Desktops</a></div></td>
+			</tr>
+        </table>   
+		 -->
+
+        <table width="739" border="0" cellspacing="4" cellpadding="4">
+          <tbody><tr>
+            <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/lineheader.gif" style="BACKGROUND-REPEAT: no-repeat;padding-left: 10px;padding-top: 8px;padding-bottom: 5px;"><strong>
+              Sponsored Links</strong></td>
+          </tr>
+          <tr>
+            <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+              <tbody><tr>
+                <td width="3%">&nbsp;</td>
+                <td width="48%"><a href="http://www.irobust.co.th/" target="_blank"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/tutorials_banner.jpg" width="300" height="250" border="0"></a>
+<table width="300" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="right"><span class="small"><strong> Thanks. Our Sponsor. </strong></span></div></td>
+  </tr>
+</tbody></table>
+</td>
+                <td width="49%">
+						
+<a href="http://www.thaicreate.com/software/firefox.html" target="blank"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/foxkeh-fx2-300x250.png" alt="Download Mozilla Firefox" width="300" height="250" border="0"></a>
+
+
+<table width="300" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="right"><span class="small"><strong> Ads Contact : 08-1987-6107 </strong></span></div></td>
+  </tr>
+</tbody></table>
+</td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+        </tbody></table>     
+        <br>
+        <table width="739" border="0" cellspacing="4" cellpadding="4">
+          <tbody><tr> 
+            <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/lineheader.gif" style="BACKGROUND-REPEAT: no-repeat;padding-left: 10px;padding-top: 8px;padding-bottom: 5px;"><strong> 
+              Sponsored Links</strong></td>
+          </tr>
+         
+          <tr>
+            <td valign="top"><br>
+		<center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-0639452308651048";
+/* 336x280, Tutorials-Banner 6/2/11 */
+google_language = 'en';
+google_ad_slot = "2201474755";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><ins id="aswift_4_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px"><iframe allowtransparency="true" frameborder="0" height="280" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="336" id="aswift_4" name="aswift_4" style="left:0;position:absolute;top:0;"></iframe></ins></ins></center>		
+			</td>
+          </tr>
+          <tr> 
+            <td valign="top">
+             
+<table border="0" cellspacing="1" cellpadding="1"><tbody><tr><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/app.gif" alt="PHP+Adodb+Smarty" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/php-adodb-smarty.html" title="PHP+Adodb+Smarty" style="text-decoration:underline"><strong> 
+                    PHP+Adodb+Smarty                    </strong></a> <br> 
+                    <span class="sub_content">PHP+Adodb+Smarty</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2010-03-07 18:55:12                    <strong>View :</strong>
+                    4,784                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td><td></td><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/site-apppkgs.gif" alt="Backup บน SQL Server 2005 และ 2008 แบบรัน Auto Schedule Task อัตโนมัติ" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/sql-server-2005-2008-backup-database-auto.html" title="Backup บน SQL Server 2005 และ 2008 แบบรัน Auto Schedule Task อัตโนมัติ" style="text-decoration:underline"><strong> 
+                    Backup บน SQL Server 2005 และ 2008 แบบรัน Auto Schedule Task อัตโนมัติ                    </strong></a> <br> 
+                    <span class="sub_content">การ config บน database ของ sql server 2005 และ 2008 ในการที่จะสั่ง task schedule ให้ application ทำการ backup หรือทำงานอื่น ๆ ตามต้องการ</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2012-05-14 14:17:01                    <strong>View :</strong>
+                    287                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td></tr><tr><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/app.gif" alt="PHP dateTimeFormat รูปแบบวันที่ (รูปแบบวันที่ภาษาไทยใน PHP)" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/php-date-time-format.html" title="PHP dateTimeFormat รูปแบบวันที่ (รูปแบบวันที่ภาษาไทยใน PHP)" style="text-decoration:underline"><strong> 
+                    PHP dateTimeFormat รูปแบบวันที่ (รูปแบบวันที่ภาษาไทยใน PHP)                    </strong></a> <br> 
+                    <span class="sub_content">PHP dateTimeFormat รูปแบบวันที่ (รูปแบบวันที่ภาษาไทยใน PHP)</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2011-10-03 19:16:56                    <strong>View :</strong>
+                    12,466                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td><td></td><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/hosting.gif" alt="ติดตั้ง SMTP สำหรับส่งอีเมล์ด้วย IIS SMTP Virtual Server" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/iis-smtp-send-mail.html" title="ติดตั้ง SMTP สำหรับส่งอีเมล์ด้วย IIS SMTP Virtual Server" style="text-decoration:underline"><strong> 
+                    ติดตั้ง SMTP สำหรับส่งอีเมล์ด้วย IIS SMTP Virtual Server                    </strong></a> <br> 
+                    <span class="sub_content">IIS SMTP Virtual Server เป็นโปรแกรมสำหรับจำลอง SMTP ในการส่งอีเมล์โดยสามารถใช้ได้กับทุกภาษา เช่น ASP,PHP หรือ ASP.NET</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2009-04-29 07:13:57                    <strong>View :</strong>
+                    17,114                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td></tr><tr><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/app.gif" alt="AJAX กับการสร้างปฏิทินแบบ pickup" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/php-ajax-calendar.html" title="AJAX กับการสร้างปฏิทินแบบ pickup" style="text-decoration:underline"><strong> 
+                    AJAX กับการสร้างปฏิทินแบบ pickup                    </strong></a> <br> 
+                    <span class="sub_content">AJAX กับการสร้างปฏิทินแบบ pickup เป็นการใช้ภาษา PHP กับ AJAX ร่วมกัน</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2011-05-04 23:55:19                    <strong>View :</strong>
+                    3,393                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td><td></td><td valign="top">						<table width="359" border="0" cellspacing="2" cellpadding="2">
+
+                <tbody><tr> 
+                  <td width="7%" valign="top"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/Documentation.gif" alt="Download ฟรี PHP ระบบแสดงข่าวสาร News อัปเดตข้อมูลข่าวสารบนเว็บไซต์ (PHP+MySQL)" width="32" height="32" border="0"></div></td>
+                  <td width="93%"><a href="http://www.thaicreate.com/community/php-news-update.html" title="Download ฟรี PHP ระบบแสดงข่าวสาร News อัปเดตข้อมูลข่าวสารบนเว็บไซต์ (PHP+MySQL)" style="text-decoration:underline"><strong> 
+                    Download ฟรี PHP ระบบแสดงข่าวสาร News อัปเดตข้อมูลข่าวสารบนเว็บไซต์ (PHP+MySQL)                    </strong></a> <br> 
+                    <span class="sub_content">เห็นพี่ๆ เพื่อนใน thaicreate เอาของดีมาฝากกันมากมาย ก็อยากจะมีอะไรมาให้มาฝากเพื่อนๆบ้าง ก็เลยนั่งทำระบบ อัปเดตข้อมูลข่าวสารบนเว็บไซต์</span>
+                    <br>
+                    <span class="small"><strong>Rate : </strong><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/startrue.gif" width="10" height="9"> <strong><br>
+                    Update : </strong>
+                    2011-09-03 09:51:15                    <strong>View :</strong>
+                    3,202                    </span>                   </td>
+                </tr>
+              </tbody></table>
+            </td></tr></tbody></table>	<table width="100%" border="0">
+              <tbody><tr>
+                <td>
+                  <div align="left">
+                    <script type="text/javascript"><!--
+google_ad_client = "ca-pub-0639452308651048";
+/* 728x15, Link 2/19/09 */
+google_language = 'en';
+google_ad_slot = "6447051561";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+                                </script>
+                    <script type="text/javascript" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/show_ads.js">
+                                </script><ins style="display:inline-table;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><ins id="aswift_5_anchor" style="display:block;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:728px"><iframe allowtransparency="true" frameborder="0" height="15" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){i+=&#39;.call&#39;;setTimeout(h,0)}else if(h.match){i+=&#39;.nav&#39;;w.location.replace(h)}s.log&amp;&amp;s.log.push(i)}" scrolling="no" vspace="0" width="728" id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+                </div></td>
+              </tr>
+            </tbody></table></td>
+          </tr>
+        </tbody></table>
+        
+      </td>
+    </tr>
+  </tbody></table>
+</div>
+		  
+        </td>
+          <td width="19%" valign="top">              
+            <table id="Table_01" width="186" height="430" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td colspan="2"> <div align="center"><a href="http://www.thaicreate.com/topic/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/button_01.png" alt="ThaiCreate.Com Forum" title="ThaiCreate.Com Forum" width="186" height="51" border="0"></a><br>
+				        <a href="http://www.thaicreate.com/topic/hilight.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/topichot.png" alt="ThaiCreate.Com Forum คลังกระทู้" title="ThaiCreate.Com Forum คลังกระทู้" width="179" height="21" border="0"></a> <br>
+						 <span style="cursor:pointer" onclick="window.location=&#39;/community.html&#39;"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/article_member.png" alt="บทความโดยสมาชิก" title="บทความโดยสมาชิก" width="179" height="21" border="0"></span></div></td>
+                </tr>
+                <tr>
+                  <td> <a href="http://www.thaicreate.com/php/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_01.png" alt="PHP Forum" title="PHP Forum" width="93" height="78" border="0"></a></td>
+                  <td> <a href="http://www.thaicreate.com/asp/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_02.png" alt="ASP Forum" title="ASP Forum" width="93" height="78" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td> <a href="http://www.thaicreate.com/dotnet/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_03.png" alt=".NET Forum" title=".NET Forum" width="93" height="76" border="0"></a></td>
+                  <td> <a href="http://www.thaicreate.com/graphic/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_04.png" alt="Graphic Forum" title="Graphic Forum" width="93" height="76" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td> <a href="http://www.thaicreate.com/community/forum.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_05.png" alt="Comunity Forum" title="Comunity Forum" width="93" height="77" border="0"></a></td>
+                  <td> <a href="http://www.thaicreate.com/free-web-script.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_06.png" alt="Free Web Script" width="93" height="77" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td> <a href="http://www.thaicreate.com/freelance.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_07.png" alt="Jobs Freelance" title="Jobs Freelance" width="93" height="73" border="0"></a></td>
+                  <td> <a href="http://www.thaicreate.com/free-upload-files.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_08.png" alt="Free Uploads" title="Free Uploads" width="93" height="73" border="0"></a></td>
+                </tr>
+                <tr>
+                  <td> <a href="http://www.thaicreate.com/free-web-hosting.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_09.png" alt="Free Web Hosting" title="Free Web Hosting" width="93" height="77" border="0"></a></td>
+                  <td> <a href="http://www.thaicreate.com/software.html"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/xbutton_10.png" alt="Free Tools" title="Free Tools" width="93" height="77" border="0"></a></td>
+                </tr>
+            </tbody></table>
+              <table id="Table_01" width="186" height="381" border="0" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                  <td>				    <div align="center">				 <a href="http://www.thaicreate.com/dotnet.html"><br>
+                    <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/DotnetLogo.jpg" alt=".NET Framework" title=".NET Framework" width="159" height="89" border="0"></a><br>
+                    <br>
+				 <a href="http://www.thaicreate.com/dotnet/dotnet-smartdevice-smartphone-pocket-pc-windows-ce.html" title=".NET Smart Device (VB.NET,C#)" target="_blank" alt=".NET Smart Device (VB.NET,C#)"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/smartdevice.jpg" alt=".NET Smart Device (VB.NET,C#)" title=".NET Smart Device (VB.NET,C#)" width="174" height="42" border="0"></a> <a href="http://www.thaicreate.com/dotnet/dotnet-console-application.html" title=".NET Console Application (VB.NET,C#)" target="_blank" alt=".NET Console Application (VB.NET,C#)"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/consoleapp.jpg" alt=".NET Console Application (VB.NET,C#)" title=".NET Console Application (VB.NET,C#)" width="174" height="42" border="0"></a> <a href="http://www.thaicreate.com/dotnet/dotnet-windows-form-application-winapp.html" title=".NET Windows Form Application , Windows App (VB.NET,C#)" target="_blank" alt=".NET Windows Form Application , Windows App (VB.NET,C#)"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/windowsapp.jpg" alt=".NET Windows Form Application , Windows App (VB.NET,C#)" title=".NET Windows Form Application , Windows App (VB.NET,C#)" width="174" height="42" border="0"></a> <a href="http://www.thaicreate.com/dotnet/dotnet-silverlight-application.html" title=".NET Silverlight Application" target="_blank" alt=".NET Silverlight Application"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/silverlight.jpg" alt=".NET Silverlight Application" title=".NET Silverlight Application" width="174" height="42" border="0"></a> <br>
+                    <br>
+                    <table width="178" height="172" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+                      <tbody><tr>
+                        <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_01.jpg" width="6" height="36" alt=""></td>
+                        <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_02.jpg"><div align="center" style="padding-top:7px"><strong>Free Tutorial </strong> </div></td>
+                        <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_03.jpg" width="6" height="36" alt=""></td>
+                      </tr>
+                      <tr>
+                        <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04_1.jpg"> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg" width="6" height="125" alt=""></td>
+                        <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;"><table width="100%" border="0" cellspacing="1" cellpadding="1">
+                            <tbody><tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/vb.jpg" width="14" height="15"></div></td>
+                              <td><a href="http://www.thaicreate.com/jquery.html" title="สอน jQuery"><strong>สอน jQuery</strong></a></td>
+                            </tr>		
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajax.gif" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/community/php-oop-tutorial-vdo-online.html" title="สอน PHP OOP (Vdo)"><strong>สอน PHP OOP (Vdo)</strong></a></td>
+                            </tr>
+                            <tr>
+                            </tr><tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ajax.gif" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/ajax.html" title="Ajax Tutorials"><strong>Ajax Tutorials</strong></a></td>
+                            </tr>
+                            <tr>
+                              <td width="13%"><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/sql.gif" width="16" height="16"></div></td>
+                              <td width="87%"><a href="http://www.thaicreate.com/tutorial/sql.html" title="SQL Tutorials"><strong>SQL Tutorials</strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/sql.gif" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/asp/asp-sql-command.html" title="สอน SQL (Part 2)"><strong>สอน SQL (Part 2)</strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/js.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/javascript.html" title="JavaScript Tutorials"><strong>JavaScript Tutorial</strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/js.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/software/firefox.html" title="ดาวน์โหลด Firefox"><strong>ดาวน์โหลด Firefox</strong></a></td>
+                            </tr>							
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/js2.jpg" width="14" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/javascript-tips-tricks.html" title="Javascript Tips &amp; Tricks"><strong>Javascript Tips</strong></a></td>
+                            </tr>	
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/access.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/ms-access.html" title="Microsoft Access Tutorials"><strong>Microsoft Access</strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/mysql.jpg" width="16" height="10"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/mysql.html" title="MySQL  Tutorials"><strong>MySQL Tutorials </strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/sqlserver.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/sqlserver.html" title="SQL Server  Tutorials"><strong>SQL Server Tutorials </strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/sqlserver.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/sqlserver-2005.html" title="SQL Server 2005  Tutorials"><strong>SQL Server 2005 </strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/sqlserver.jpg" width="16" height="16"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/sqlserver-2008.html" title="SQL Server 2008  Tutorials"><strong>SQL Server 2008 </strong></a></td>
+                            </tr>
+                            <tr>
+                              <td><div align="center"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/oci.jpg" width="15" height="15"></div></td>
+                              <td><a href="http://www.thaicreate.com/tutorial/oracle.html" title="Oracle Tutorial"><strong>Oracle Tutorial</strong></a></td>
+                            </tr>
+                          </tbody></table>
+                            <br></td>
+                        <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06_1.jpg"> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg" width="6" height="125" alt=""></td>
+                      </tr>
+                      <tr>
+                        <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_07.jpg" width="6" height="11" alt=""></td>
+                        <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_08.jpg" width="166" height="11" alt=""></td>
+                        <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_09.jpg" width="6" height="11" alt=""></td>
+                      </tr>
+                    </tbody></table>
+                    <div align="center">                    <br>
+				    <table width="178" height="60" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+                        <tbody><tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_01.jpg" width="6" height="36" alt=""></td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_02.jpg"><div align="center" style="padding-top:7px"><strong>
+                              สุดยอด Source Code V2.0</strong> </div></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_03.jpg" width="6" height="36" alt=""></td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp; </td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;"> <div align="center"><strong><a href="http://www.thaicreate.com/source-code2.0.html" title="CD Source Code 2.0" alt="CD Source Code 2.0"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/cd2.png" width="160" height="167" border="0"></a> </strong><br>
+						  <strong><span style="cursor: pointer;" onclick="window.location=&#39;/payment.html&#39;">แจ้งชำระเงิน/โอนเงิน</span></strong>
+                          </div></td><td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp; </td>
+                        </tr>
+                        <tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_07.jpg" width="6" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_08.jpg" width="166" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_09.jpg" width="6" height="11" alt=""></td>
+                        </tr>
+                    </tbody></table>
+		              <br>
+		              <br>
+					  <!--
+	                <img src="http://www.older.thaicreate.com/images/banner.jpg" width="170" height="330" border="0" rel="nofollow"><br>
+		              <br>
+					  -->
+		              <table width="178" height="60" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+                        <tbody><tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_01.jpg" width="6" height="36" alt=""></td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_02.jpg"><div align="center" style="padding-top:7px"><strong>Hits Link</strong></div></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_03.jpg" width="6" height="36" alt=""></td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td rowspan="9" valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+						
+						  <table width="165" border="0" align="center" cellpadding="0" cellspacing="2" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" id="Table_01">
+						     
+							<tbody><tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.shotdev.com/" title="PHP ASP and ASP.NET" target="_blank">PHP ASP and ASP.NET</a></font> </div></td>
+					        </tr>
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.windowshostingasp.net/" title="ASP.NET hosting" target="_blank">ASP.NET hosting</a></font></div></td>
+					        </tr>
+ 						    <tr>
+						    </tr><tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.voake.com/" title="เครื่องนับธนบัตร" target="_blank">เครื่องนับธนบัตร</a></font></div></td>
+					        </tr>
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.jobbangkok.com/" title="หางาน" target="_blank">หางาน</a></font></div></td>
+					        </tr>							
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/free-web-hosting.html" title="Free Web Hosting" target="_blank">Free Web Hosting</a></font></div></td>
+					        </tr>			
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/free-upload-files.html" title="Free Upload File" target="_blank">Free Upload File</a></font></div></td>
+					        </tr>	
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/asp.net/asp.net-install-dot-net-framework3.5.html" title="Download .NET Framework 3.5" target="_blank">Download .NET Framework 3.5</a></font></div></td>
+					        </tr>		
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/asp.net/asp.net-install-dot-net-framework4.0.html" title="Download .NET Framework 4.0" target="_blank">Download .NET Framework 4.0</a></font></div></td>
+					        </tr>							
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/community/dotnet-crystal-report.html" title=".NET &amp; Crystal Report" target="_blank">.NET &amp; Crystal Report</a></font></div></td>
+					        </tr>	
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/community/dotnet-web-service.html" title=".NET &amp; Web Service" target="_blank">.NET &amp; Web Service</a></font></div></td>
+					        </tr>		
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/php/php-and-web-service.html" title="PHP &amp; Web Service" target="_blank">PHP &amp; Web Service</a></font></div></td>
+					        </tr>																
+						    <tr>
+                              <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;">
+                                <div align="center"> <font class="lnkref"><a href="http://www.thaicreate.com/asp.net/asp.net-visual-studio-2010.html" title="Visual Studio 2010" target="_blank">Visual Studio 2010</a></font></div></td>
+					        </tr>												
+																		
+							
+							</tbody></table></td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp;</td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp; </td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp; </td>
+                        </tr>
+                        <tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_07.jpg" width="6" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_08.jpg" width="166" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_09.jpg" width="6" height="11" alt=""></td>
+                        </tr>
+                      </tbody></table>
+		              <br>
+		              <br>
+		              <table width="178" border="0" align="center" cellpadding="0" cellspacing="0" id="Table_01">
+                        <tbody><tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_01.jpg" width="6" height="36" alt=""></td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_02.jpg"><div align="center" style="padding-top:7px"><strong> Link Exchange </strong></div></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_03.jpg" width="6" height="36" alt=""></td>
+                        </tr>
+                        <tr>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_04.jpg">&nbsp; </td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_05.jpg" style="BACKGROUND-REPEAT: no-repeat;"><div align="center"><a href="http://www.thaicreate.com/tag-link.html" title="แลกเปลี่ยน Exchange Link">แลกเปลี่ยน Exchange Link</a> </div></td>
+                          <td valign="top" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_06.jpg">&nbsp; </td>
+                        </tr>
+                        <tr>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_07.jpg" width="6" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_08.jpg" width="166" height="11" alt=""></td>
+                          <td> <img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/imgBlock_09.jpg" width="6" height="11" alt=""></td>
+                        </tr>
+                      </tbody></table>
+		              <br>
+		              <br>
+		              <a href="http://www.thaicreate.com/ad.html" target="_blank"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/ads-ban.jpg" width="178" height="91" border="0"></a><br><br><br>
+					  
+			
+			<iframe src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/likebox.htm" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:182px; height:595px;" allowtransparency="true"></iframe>		
+					
+					
+	                                  </div></div></td>
+                </tr>
+              </tbody></table>        
+            <div align="center"><strong>
+              
+                <br>
+      
+                             
+ <br>
+		 <br>
+		            </strong></div></td>
+        </tr>
+				        <tr>
+          <td colspan="2" valign="top">&nbsp;</td>
+        </tr>
+		        <tr>
+          <td colspan="2" valign="top"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/spacer.gif" width="100" height="7"></td>
+        </tr>
+      </tbody></table>
+      
+    </td>
+  </tr>
+</tbody></table>
+<table width="1004" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td width="33102" height="58" colspan="3"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody><tr>
+          <td height="65" background="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/background_slice.png"><div align="center"><span class="footer"> </span> <span class="footer"> <br>
+            <!--BEGIN WEB STAT CODE---->
+					<script language="javascript1.1" src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/f0010575.js"></script><script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/th_donate_1.8.js"></script><script src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/th_common_1.4.js"></script><a href="http://truehits.net/stat.php?login=thaicreate.com" target="_blank"><img src="./PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ_files/goggen.php" width="14" height="17" alt="Thailand Web Stat" border="0"></a>
+                    <!-- END WEBSTAT CODE -->
+ © www.ThaiCreate.Com. 2003-2012 All Rights Reserved. Link : <a href="http://www.thaigoodweb.com/" title="Free Template Vector Icon Script Flash PNG AI" target="_blank">ไทยกู๊ดเว็บ</a> , <a href="http://www.thaigascar.com/" title="ติดแก๊ส" target="_blank">ติดแก๊ส</a>   
+ , <a href="http://www.thaigamedownload.com/" title="Promote Website" target="_blank">Promote Website</a>
+ <br>
+              Comments &amp; Suggestions Please Contact Us : thaicreate at hotmail dot com [<span style="cursor: pointer;" onclick="window.location=&#39;/member-level.html&#39;">Conditions Privacy Statement</span>]
+              <strong>ติดต่อโฆษณา</strong> 081-987-6107 <strong><u>อัตราราคา</u> <a href="http://www.thaicreate.com/ad.html">คลิกที่นี่</a></strong>              <br>
+              <br>
+          </span></div></td>
+        </tr>
+    </tbody></table></td>
+  </tr>
+</tbody></table>
+<input type="hidden" size="100" name="box-content-clipboard" id="box-content-clipboard" value="[b][u]Go to[/u] : [url=http://www.thaicreate.com/community/php-mysql-pagination.html]PHP MySQL Pagination ทำแบ่งหน้าด้วย PHP กับ MySQL ย่อจำนวนหน้า ในกรณีที่มีจำนวนหน้าเยอะ ๆ[/url][/b]">
+
+	<script type="text/javascript"> 
+		//set path
+		ZeroClipboard.setMoviePath('/js/ZeroClipboard.swf');
+		//create client
+		var clip = new ZeroClipboard.Client();
+		//event
+		clip.addEventListener('mousedown',function() {
+			clip.setText(document.getElementById('box-content-clipboard').value);
+		});
+		clip.addEventListener('complete',function(client,text) {
+			alert('Copied: Done!');
+		});
+		//glue it to the button
+		var copyclipboard = document.getElementById('copyclipboard');
+		if(copyclipboard != null)
+		{
+		clip.glue('copyclipboard');
+		}
+
+		function alertNews()
+		{
+
+		}
+	</script><div style="position: absolute; left: 139px; top: 610px; width: 130px; height: 31px; z-index: 99; "><embed id="ZeroClipboardMovie_1" src="/js/ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="130" height="31" name="ZeroClipboardMovie_1" align="middle" allowscriptaccess="always" allowfullscreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="id=1&amp;width=130&amp;height=31" wmode="transparent"></div> 
+
+		<div style="display: none;">
+		<a id="various1" href="http://www.thaicreate.com/community/php-mysql-pagination.html#inline1" title="ThaiCreate.Com ไทยครีเอท">Inline</a>
+			</div>
+
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>

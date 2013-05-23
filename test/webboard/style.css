@@ -1,0 +1,47 @@
+body,td,th {
+color: #0033FF;
+font-size: 12px;
+
+}
+
+a:link {
+	color: #FF6600;
+}
+a:hover {
+	color: #00FF00;
+}
+.red {color: #FF0000}
+.head {font-size: 24px; color:#FF6600;}
+.topic {font-size: 14px; color: #FF6600}
+.comment {font-size: 12px; color: #FF6600}
+.dot {
+	BACKGROUND: url(img/dot.gif) #ffffff repeat-x left top
+}
+label {
+ display:block;
+ font-weight:bold;
+ margin:5px 0;
+}
+input {
+ padding: 2px;
+ border:1px solid #666666;
+ font: normal 1em Verdana, sans-serif;
+ color:#777;
+}
+textarea {
+ width:300px;
+ padding:5px;
+ font: normal 1em Verdana, sans-serif;
+ border:1px solid #666666;
+ height:100px;
+ display:block;
+ color:#777;
+}
+input.button { 
+ margin: 0; 
+ font: bold 1em Arial, Sans-serif; 
+ border: 1px solid #CCC;
+ background: #FFF; 
+ padding: 2px 3px; 
+ color: #4284B0; 
+}

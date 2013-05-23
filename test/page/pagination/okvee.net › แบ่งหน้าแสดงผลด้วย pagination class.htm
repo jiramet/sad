@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<title>okvee.net &rsaquo; แบ่งหน้าแสดงผลด้วย pagination class</title>
+		<!-- additional meta tag -->
+<meta name="description" content="การแบ่งหน้า เพื่อที่จะไม่ต้องแสดงผลยาวๆในหน้าเดียว จะเรียกว่า pager, pagination หรืออะไรก็ตาม มัน..." />
+<meta name="keywords" content="php class" />
+<meta property="og:title" content="แบ่งหน้าแสดงผลด้วย pagination class" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://www.okvee.net/client/upload/media/6d5cfc282103eced82e2ff457956cc09-smallwide.jpg" />
+<meta property="og:url" content="http://www.okvee.net/articles/%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-pagination-class" />
+<!-- end additional meta tag -->
+		
+		<link href="http://www.okvee.net/client/js/jquery.ui/css/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" /> 
+		<link href="http://www.okvee.net/client/960/min/reset.css" rel="stylesheet" type="text/css" /> 
+		<link href="http://www.okvee.net/client/960/min/text.css" rel="stylesheet" type="text/css" /> 
+		<link href="http://www.okvee.net/client/960/min/960.css" rel="stylesheet" type="text/css" /> 
+		<link href="http://www.okvee.net/client/themes/default/style.css?01092011" rel="stylesheet" type="text/css" /> 
+		<link href="http://www.okvee.net/favicon.ico" rel="shortcut icon" type="image/ico" /> 
+		<link rel="alternate" type="application/rss+xml" title="ok vee &raquo; Feed" href="http://www.okvee.net/feed/" /> 
+		<!-- additional link tag -->
+<link href="http://www.okvee.net/client/js/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://www.okvee.net/client/js/syntaxhighlighter/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+<link href="http://www.okvee.net/articles/%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-pagination-class" rel="canonical" type="text/css" />
+<!-- end additional link tag -->		
+		
+		<script src="http://www.okvee.net/client/js/jquery.js" type="text/javascript"></script>
+		<script src="http://www.okvee.net/client/js/jquery.ui/jquery-ui.js" type="text/javascript"></script>
+		<!--[if lte IE 8]><script src="http://www.okvee.net/client/js/html5.js" type="text/javascript"></script><![endif]-->
+		<!-- additional script tag -->
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="http://www.okvee.net/client/js/syntaxhighlighter/scripts/shBrushXml.js"></script>
+<!-- end additional script tag -->
+		
+		<!-- hook into head tag -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9528656-2']);
+  _gaq.push(['_setDomainName', 'okvee.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<link href="http://www.okvee.net/modules/social_share/social_share.css" rel="stylesheet" type="text/css" /><script type="text/javascript" src="http://www.okvee.net/modules/social_share/social_share.js"></script>
+<!-- end hookhead -->
+	</head>
+	<body>		<div class="header">
+			<!--[if lt IE 7]><div class="ie-alert">This theme does not support ie 6 or lower; please use ie 9 or other web browser.</div><![endif]-->
+<header class="inner_header page_header container_16">
+	<div class="site_name"><a href="http://www.okvee.net/">okvee.net</a></div>
+	
+		<nav class="header_widget">
+	<div class="widget_box widget-18">
+<ul class="menu_tree">
+			<li id="list_12" class="lv1 open">
+		<a href="http://www.okvee.net/">Home</a>		</li>
+		<li id="list_2" class="lv1 open">
+		<a href="http://www.okvee.net/category/web-resources">Web resources</a>		
+<ul>
+		<li id="list_3" class="lv2">
+		<a href="http://www.okvee.net/category/web-resources/download">Download</a>		</li>
+</ul>
+</li>
+		<li id="list_13" class="lv1 open">
+		<a href="http://www.okvee.net/category/knowledge">Knowledge</a>		</li>
+		<li id="list_4" class="lv1 open">
+		<a href="http://www.okvee.net/products">Products</a>		
+<ul>
+		<li id="list_5" class="lv2">
+		<a href="http://www.okvee.net/products/vbml-cms">VBML</a>		</li>
+		<li id="list_9" class="lv2">
+		<a href="http://www.okvee.net/products/okv-cms">Okv cms</a>		</li>
+		<li id="list_7" class="lv2">
+		<a href="http://www.okvee.net/products/how-to-order-and-payment">วิธีสั่งซื้อและชำระเงิน</a>		</li>
+</ul>
+</li>
+		<li id="list_8" class="lv1 open">
+		<a href="http://www.okvee.net/contact">ติดต่อ</a>		</li>
+</ul>
+</div><!--.widget_box-->
+	</nav><!--.header_widget-->
+		<div class="clear"></div>
+	
+		<nav class="navbar">
+			</nav><!--.navbar-->
+		<div class="clear"></div>
+</header><!--.inner_header page_header-->
+		</div><!--.header-->
+		
+		<div class="container_16 subheader">
+			<div class="inner_sub_header">
+		
+	</div><!--.inner_sub_header-->		</div><!--.subheader-->
+		
+		<div class="container_16 body_wrapper">
+			<div class="grid_12 content_wrapper">
+				<article class="post-page">
+	<nav class="breadcrumb"><a href="http://www.okvee.net/">Home</a> <span class="connector">&rsaquo;</span> <a href="http://www.okvee.net/articles/%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-pagination-class">แบ่งหน้าแสดงผลด้วย pagination class</a></nav>	<header>
+		<h1>แบ่งหน้าแสดงผลด้วย pagination class</h1>		<div class="entry-meta">
+			<small>
+				<time datetime="2011-04-01" pubdate="">01 April 2011</time>				โดย <a href="http://www.okvee.net/author/vee" rel="author">vee</a>			</small>
+		</div>
+	</header>
+	<div class="entry-content">
+		<div style="text-align: center;"><img style="border: 1px solid black;" src="http://www.okvee.net/client/upload/media/2abf8010d7b5111f7b6b4ca3dad50ba7.jpg" alt="img" /></div>
+<p>&nbsp;</p>
+<p>การ แบ่งหน้า เพื่อที่จะไม่ต้องแสดงผลยาวๆในหน้าเดียว จะเรียกว่า pager, pagination หรืออะไรก็ตาม มันก็คือการแบ่งการแสดงผลจาก database ออกมาเป็นจำนวนย่อยๆนั่นเอง</p>
+<p>class php pagination นี้สร้างโดยแรงบันดาลใจ และอ้างอิงค่า config ต่างๆจาก codeigniter</p>
+<p><a href="http://www.okvee.net/download?id=11"><img src="http://www.okvee.net/client/images/download.png" alt="download" /></a></p>
+<h2>อ้างอิงค่าต่างๆ</h2>
+<table class="table" width="100%" border="1" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td bgcolor="#CCCCCC"><strong>config หลัก</strong></td>
+<td bgcolor="#CCCCCC"><strong>คำอธิบาย</strong></td>
+</tr>
+<tr>
+<td>$config['base_url']</td>
+<td>URL แบบเต็มสำหรับหน้าที่จะแบ่งการแสดงผล(แบ่งหน้า) โดยอย่างน้อยให้มี querystring 1 อย่าง เช่น http://localhost/page.php?orders=</td>
+</tr>
+<tr>
+<td>$config['total_rows']</td>
+<td>จำนวนผลลัพธ์ทั้งหมด ก่อนทำการแบ่งแสดงผล</td>
+</tr>
+<tr>
+<td>$config['per_page']</td>
+<td>จำนวนรายการที่จะแสดงต่อ 1 หน้า เช่น 10, 20</td>
+</tr>
+<tr>
+<td bgcolor="#CCCCCC"><strong>ค่า config ที่เป็นส่วนเสริม</strong></td>
+<td bgcolor="#CCCCCC"><strong>คำอธิบาย</strong></td>
+</tr>
+<tr>
+<td>$config['num_links']</td>
+<td>จำนวนลิ้งค์ก่อนและหลังตัวเลขหน้าปัจจุบัน เช่นปัจจุบันคลิกอยู่หน้า 5 กำหนดจำนวนลิ้งค์ 2 จะแสดง 3 4 5 6 7</td>
+</tr>
+<tr>
+<td>$config['full_tag_open']</td>
+<td>แทกเปิดของการแบ่งหน้าทั้งหมด</td>
+</tr>
+<tr>
+<td>$config['full_tag_close']</td>
+<td>แทกปิดของการแบ่งหน้าทั้งหมด</td>
+</tr>
+<tr>
+<td>$config['first_link']</td>
+<td>คำที่จะใช้แทนคำว่าหน้าแรก หากไม่ต้องการให้มี ให้กำหนดเป็น false</td>
+</tr>
+<tr>
+<td>$config['first_tag_open']</td>
+<td>แทกเปิดของคำว่าหน้าแรก</td>
+</tr>
+<tr>
+<td>$config['first_tag_close']</td>
+<td>แทกปิดของคำว่าหน้าแรก</td>
+</tr>
+<tr>
+<td>$config['last_link']</td>
+<td>คำที่จะใช้แทนคำว่าหน้าสุดท้าย หากไม่ต้องการให้มี ให้กำหนดเป็น false</td>
+</tr>
+<tr>
+<td>$config['last_tag_open']</td>
+<td>แทกเปิดของคำว่าหน้าสุดท้าย</td>
+</tr>
+<tr>
+<td>$config['last_tag_close']</td>
+<td>แทกปิดของคำว่าหน้าสุดท้าย</td>
+</tr>
+<tr>
+<td>$config['next_link']</td>
+<td>คำที่จะใช้แทนคำว่าหน้าถัดไป หากไม่ต้องการให้มี ให้กำหนดเป็น false</td>
+</tr>
+<tr>
+<td>$config['next_tag_open']</td>
+<td>แทกเปิดของคำว่าหน้าถัดไป</td>
+</tr>
+<tr>
+<td>$config['next_tag_close']</td>
+<td>แทกปิดของคำว่าหน้าถัดไป</td>
+</tr>
+<tr>
+<td>$config['prev_link']</td>
+<td>คำที่จะใช้แทนคำว่าหน้าก่อน หากไม่ต้องการให้มี ให้กำหนดเป็น false</td>
+</tr>
+<tr>
+<td>$config['prev_tag_open']</td>
+<td>แทกเปิดของคำว่าหน้าก่อน</td>
+</tr>
+<tr>
+<td>$config['prev_tag_close']</td>
+<td>แทกปิดของคำว่าหน้าก่อน</td>
+</tr>
+<tr>
+<td>$config['cur_tag_open']</td>
+<td>แทกเปิดของเลขหน้าปัจจุบัน</td>
+</tr>
+<tr>
+<td>$config['cur_tag_close']</td>
+<td>แทกปิดของเลขหน้าปัจจุบัน</td>
+</tr>
+<tr>
+<td>$config['num_tag_open']</td>
+<td>แทกเปิดของตัวเลขหน้า</td>
+</tr>
+<tr>
+<td>$config['num_tag_close']</td>
+<td>แทกปิดของตัวเลขหน้า</td>
+</tr>
+<tr>
+<td>$config['display_pages']</td>
+<td>แสดงเลขหน้า หากไม่ต้องการแสดงเลขหน้าให้กำหนดเป็น false</td>
+</tr>
+</tbody>
+</table>
+<h3>ตัวอย่างการใช้งาน</h3>
+<p><pre class="brush: php">
+
+
+require(dirname(__FILE__)."/pagination.php");
+
+
+$sql = "select * from $main_table where 1 order by id asc";
+ $result = mysql_query($sql);
+ $total = mysql_num_rows($result);// นับจำนวนทั้งหมดในฐานข้อมูลตามเงื่อนไข sql ข้างบน
+ ##############################
+ // กำหนดค่า config ให้กับ pagination class
+ $config['base_url'] = "http://localhost/test/pagination/view1.php?order=";
+ $config['total_rows'] = $total;// ค่าที่นับได้"ทั้งหมด"จาก sql ด้านบน
+ $config['per_page'] = 10;
+ $pagination = new pagination($config);
+ $start_item = (!isset($_GET['per_page']) ? "0" : intval($_GET['per_page']));
+ ##############################
+ $sql .= " limit $start_item, " . $config['per_page'];
+ $result = mysql_query($sql);
+
+
+//ต่อจากนี้ก็ทำการวนแสดงผลตามปกติ
+
+
+</pre></p>	</div><!--.entry-content-->
+	<footer class="entry-utility">
+		ในหมวดหมู่: <a href="http://www.okvee.net/category/web-resources">Web resources</a>, <a href="http://www.okvee.net/category/web-resources/download">Download</a> แทก: <a href="http://www.okvee.net/tag/php-class">php class</a>	</footer><!--.entry-utility-->
+</article><!--.post-page-->
+
+<script type="text/javascript">
+	SyntaxHighlighter.all()
+</script>
+
+
+
+<!-- 3564c1d5c17ad3c1d3cd3f15ea225f62 newly/extened cache -->
+<div class="list_comment">
+			
+</div><!--.list_comment--><div id="post_comment"><div class="post_comment">
+	
+	<h3>เขียนความคิดเห็น</h3>
+
+	
+	<form action="http://www.okvee.net/comment/comment_form" method="post" accept-charset="utf-8"><div style="display:none">
+<input type="hidden" name="csrf_token" value="d35069c8d01fdd935c9eb69d4ef59ebb" />
+</div>		
+		<input type="hidden" name="url" value="http://www.okvee.net/articles/%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-pagination-class" />
+		<dl class="form_item">
+			<dt class="form_name">ชื่อ:</dt>
+			<dd class="form_input">
+								<input type="text" name="name" value="" />
+							</dd>
+
+			<dt class="form_name">ความคิดเห็น:</dt>
+			<dd class="form_textarea"><textarea name="comment" cols="50" rows="10"></textarea></dd>
+
+			<dt>&nbsp;</dt>
+			<dd><input type="submit" name="btn" value="ส่ง" class="big bb-button grey" /></dd>
+		</dl>
+		<div class="clear"></div>
+	</form>
+			<span class="txt_comment">ความคิดเห็นของคุณต้องรอการตรวจจากผู้ดูแลก่อนที่จะเผยแพร่สู่สาธารณะ.</span>
+	
+	
+</div><!--.post_comment--></div>			</div><!--.grid_12-->
+			<div class="grid_4">
+				<aside class="side_bar page_aside">
+	<div class="widget_box widget-1"><h3>Member area</h3><ul>
+	<li><a href="http://www.okvee.net/account/register">ลงทะเบียน</a></li>
+	<li><a href="http://www.okvee.net/account/login">บันทึกเข้า</a></li>
+</ul></div><!--.widget_box-->
+<div class="widget_box widget-2"><div class="search-box">
+	
+	<form method="get" action="http://www.okvee.net/search">
+		<input type="text" name="s" value="" />
+		<input type="submit" value="ค้นหา" class="bb-button standard" />
+	</form>
+</div><!--.search-box--></div><!--.widget_box-->
+<div class="widget_box widget-6"><h3>Tools</h3>
+<ul class="menu_tree">
+			<li id="list_15" class="lv1 open">
+		<a href="http://www.okvee.net/otools/encoder">เครื่องมือเข้ารหัส/ถอดรหัส</a>		</li>
+		<li id="list_16" class="lv1 open">
+		<a href="http://www.okvee.net/otools/resizer">เครื่องมือช่วยคำณวนขนาด</a>		</li>
+</ul>
+</div><!--.widget_box-->
+<div class="widget_box widget-14"><div>
+	<h3>Recent articles</h3>
+	<ul>
+	<li><a href="http://www.okvee.net/articles/%E0%B8%9B%E0%B8%A3%E0%B8%B1%E0%B8%9A-codeigniter-%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%9A-ipv6">ปรับ Codeigniter ให้รองรับ IPv6</a></li>
+	<li><a href="http://www.okvee.net/articles/%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%90%E0%B8%B2%E0%B8%99%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B4%E0%B8%97%E0%B8%98%E0%B8%B4%E0%B8%A0%E0%B8%B2%E0%B8%9E">ออกแบบฐานข้อมูลเพิ่มประสิทธิภาพ</a></li>
+	<li><a href="http://www.okvee.net/articles/send-recieve-email-on-localhost-with-hmailserver">ส่งอีเมลบน localhost ด้วย HMailServer</a></li>
+	<li><a href="http://www.okvee.net/articles/how-to-fix-netbeans-open-unicode-file">วิธีแก้ไขเมื่อเปิดไฟล์ภาษาไทยใน netbeans แล้วไม่เป็นภาษาไทย</a></li>
+	<li><a href="http://www.okvee.net/articles/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B9%80%E0%B8%81%E0%B9%88%E0%B8%B2%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88-%E0%B9%82%E0%B8%94%E0%B8%A2%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99">การแบ่งหน้าแบบเก่าไปใหม่ โดยแสดงข้อมูลชุดใหม่ก่อน</a></li>
+</ul>
+</div></div><!--.widget_box-->
+<div class="widget_box widget-21"><div style="display: block;">
+	รับทำเว็บไซต์ตามความต้องการ หากสนใจโปรด<a href="http://www.okvee.net/contact">ติดต่อ</a> และระบุความต้องการของงาน<br />
+รับทำ theme wordpress หรือ psd -&gt; wordpress งานไว งานละเอียด สนใจ<a href="http://www.okvee.net/contact">ติดต่อ</a><br />
+<a href="http://www.okvee.net/portfolio">ผลงานที่เคยทำ</a></div></div><!--.widget_box-->
+</aside><!--.sidebar-->			</div><!--.grid_4-->
+			<div class="clear"></div>
+			
+			<div class="footer">
+				<footer class="inner_footer page_footer">
+	<p>Powered by <a href="http://www.okvee.net">okv cms</a></p>
+		<nav>
+		<div class="widget_box widget-13"><!-- Start of StatCounter Code -->
+			<script type="text/javascript">
+			var sc_project=6378218;
+			var sc_invisible=1;
+			var sc_security="aeffb2fd";
+			</script>
+			<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a title="statistics in vBulletin" class="statcounter" href="http://statcounter.com/vbulletin/"><img class="statcounter" src="http://c.statcounter.com/6378218/0/aeffb2fd/1/" alt="statistics in vBulletin" /></a></div></noscript>
+		<!-- End of StatCounter Code --><a href="http://statcounter.com/project/standard/stats.php?project_id=6378218&guest=1" rel="nofollow">View My Stats</a></div><!--.widget_box-->
+	</nav>
+		<div class="clear"></div>
+</footer><!--.inner_footer page_footer-->			</div><!--.footer-->
+		</div><!--.container-->
+	<!-- hook into end of body tag -->
+<ul class="sn-share" id="social_share">
+	<li>
+		<a name="fb_share" type="box_count"></a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+	</li>
+	<li>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+	</li>
+	<li class="last">
+		<div class="g-plusone" data-size="tall"></div><script type="text/javascript">(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;po.src = 'https://apis.google.com/js/plusone.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);})();</script>
+	</li>
+</ul>
+<!--stats-->
+<!-- end hook into end of body tag -->
+	<!-- debug 0.7562; 6.97MB -->
+	</body>
+</html>
