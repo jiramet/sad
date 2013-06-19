@@ -156,7 +156,7 @@
 		# 		echo $arr['a']." - ".$arr['c']."<br>\n";
 		# }
 		function fetch($sql = "sql") {
-			if ($res = mysql_fetch_object($sql)) {
+			if ($res = mysql_fetch_object("$sql")) {
 				return $res;
 			} else {
 				$this->_error();
@@ -173,7 +173,7 @@
 		}
 
 	}
-
-
+	
+	
 
 ?>
