@@ -38,6 +38,7 @@
 **/
 
 require_once('fpdf.php');
+require_once '../phpqrcode/qrlib.php';
 //require('fpdf.php');
 
 class PDF_Label extends FPDF {
@@ -150,7 +151,7 @@ class PDF_Label extends FPDF {
 		$_PosY = $this->_Margin_Top + $this->_COUNTY*($this->_Height+$this->_Y_Space) + $this->_Padding;
 		$this->SetXY($_PosX, $_PosY);
 		//$this->MultiCell($this->_Width - $this->_Padding, $this->_Line_Height, $text, 0, 'L');
-		$this->MultiCell(60, $this->_Line_Height, "$text \n111", 1, 'L');
+		$this->MultiCell(60, $this->_Line_Height, "$text\n".$this->Image(QRcode::png ( 'PHP QR Code :)' )), 1, 'L');
 
 	}
 
