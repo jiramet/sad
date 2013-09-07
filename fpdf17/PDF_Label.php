@@ -66,7 +66,7 @@ class PDF_Label extends FPDF {
 		'5163' => array('paper-size'=>'letter',	'metric'=>'mm',	'marginLeft'=>1.762,	'marginTop'=>10.7, 		'NX'=>2,	'NY'=>5,	'SpaceX'=>3.175,	'SpaceY'=>0,	'width'=>101.6,		'height'=>50.8,		'font-size'=>8),
 		'5164' => array('paper-size'=>'letter',	'metric'=>'in',	'marginLeft'=>0.148,	'marginTop'=>0.5, 		'NX'=>2,	'NY'=>3,	'SpaceX'=>0.2031,	'SpaceY'=>0,	'width'=>4.0,		'height'=>3.33,		'font-size'=>12),
 		'8600' => array('paper-size'=>'letter',	'metric'=>'mm',	'marginLeft'=>7.1, 		'marginTop'=>19, 		'NX'=>3, 	'NY'=>10, 	'SpaceX'=>9.5, 		'SpaceY'=>3.1, 	'width'=>66.6, 		'height'=>25.4,		'font-size'=>8),
-		'L7163'=> array('paper-size'=>'A4',		'metric'=>'mm',	'marginLeft'=>5,		'marginTop'=>15, 		'NX'=>2,	'NY'=>7,	'SpaceX'=>25,		'SpaceY'=>0,	'width'=>99.1,		'height'=>38.1,		'font-size'=>9),
+		'L7163'=> array('paper-size'=>'A4',		'metric'=>'mm',	'marginLeft'=>20,		'marginTop'=>15, 		'NX'=>2,	'NY'=>5,	'SpaceX'=>25,		'SpaceY'=>10,	'width'=>99.1,		'height'=>38.1,		'font-size'=>9),
 		'3422' => array('paper-size'=>'A4',		'metric'=>'mm',	'marginLeft'=>0,		'marginTop'=>8.5, 		'NX'=>3,	'NY'=>8,	'SpaceX'=>0,		'SpaceY'=>0,	'width'=>70,		'height'=>35,		'font-size'=>9)
 	);
 
@@ -150,8 +150,26 @@ class PDF_Label extends FPDF {
 		$_PosX = $this->_Margin_Left + $this->_COUNTX*($this->_Width+$this->_X_Space) + $this->_Padding;
 		$_PosY = $this->_Margin_Top + $this->_COUNTY*($this->_Height+$this->_Y_Space) + $this->_Padding;
 		$this->SetXY($_PosX, $_PosY);
-		//$this->MultiCell($this->_Width - $this->_Padding, $this->_Line_Height, $text, 0, 'L');
-		$this->MultiCell(60, $this->_Line_Height, "$text\n".$this->Image(QRcode::png ( 'PHP QR Code :)' )), 1, 'L');
+		//$this->MultiCell($this->_Width - $this->_Padding, $this->_Line_Height, $text, 1, 'L');
+		//$this->MultiCell(60, $this->_Line_Height, "Asset Imfomation Technogy",'','','C','false');
+		$this->SetFont('angsana','BI',16);
+		$this->MultiCell(60, $this->_Line_Height, "Asset iT",'','','');
+/*
+		$_PosX = $this->_Margin_Left + $this->_COUNTX*($this->_Width+$this->_X_Space) + $this->_Padding;
+		$_PosY = $this->_Margin_Top + $this->_COUNTY*($this->_Height+$this->_Y_Space) + $this->_Padding;
+		$this->SetXY($_PosX, $_PosY);
+		//$this->Image('../images/png/QR_IT_file_'.$text.'png');
+		//$this->Image('../images/png/QR_IT_file_AC-PC-001.png');
+		$this->SetFont('angsana','',12);
+		$this->MultiCell(50, $this->_Line_Height, "\nAsset : $text ", 1, 'L');
+*/
+		$_PosX = $this->_Margin_Left + $this->_COUNTX*($this->_Width+$this->_X_Space) + $this->_Padding;
+		$_PosY = $this->_Margin_Top + $this->_COUNTY*($this->_Height+$this->_Y_Space) + $this->_Padding;
+		$this->SetXY($_PosX, $_PosY);
+		//$this->Image('../images/png/QR_IT_file_AC-PC-001.png');
+		//$this->SetFont('angsana','',12);
+		//$this->MultiCell(50, $this->_Line_Height, "\nAsset : $text".$this->Image('../images/png/QR_IT_file_AC-PC-001.png'), 1, 'L');
+		$this->MultiCell(50, $this->_Line_Height,'      '.$this->Image('../images/png/QR_IT_file_AC-PC-001.png')."\n Asset iT : $text", 0, 'L');
 
 	}
 
