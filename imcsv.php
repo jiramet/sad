@@ -239,46 +239,7 @@ if ($action == "add") {
 				echo $sumarray [asset] . '<br>';
 				echo $sumarray [devicename] . '<br>';
 				echo $sumarray [manufacturer] . '<br>';
-				echo $sumarray [description] . '<br>';
-				echo $sumarray [convena] . '<br>';
-				echo $sumarray [conda] . '<br>';
-				echo $sumarray [assetstatus] . '<br>';
-				echo $sumarray [pas] . '<br>';
-				echo $sumarray [plandate] . '<br>';
-				echo $sumarray [lasttrackeddate] . '<br>';
-				echo $sumarray [department] . '<br>';
-				echo $sumarray [location] . '<br>';
-				echo $sumarray [username] . '<br>';
-				echo $sumarray [account] . '<br>';
-				echo $sumarray [email] . '<br>';
-				echo $sumarray [phone] . '<br>';
-				echo $sumarray [os] . '<br>';
-				echo $sumarray [msoff] . '<br>';
-				echo $sumarray [msvisio] . '<br>';
-				echo $sumarray [prokeywin] . '<br>';
-				echo $sumarray [prokeyoff] . '<br>';
-				echo $sumarray [prokeyvisio] . '<br>';
-				echo $sumarray [serialdisplay] . '<br>';
-				echo $sumarray [rdt] . '<br>';
-				echo $sumarray [lmd] . '<br>';
-				echo $sumarray [model] . '<br>';
-				echo $sumarray [serial] . '<br>';
-				echo $sumarray [processor] . '<br>';
-				echo $sumarray [totalmem] . '<br>';
-				echo $sumarray [storage] . '<br>';
-				echo $sumarray [freestorage] . '<br>';
-				echo $sumarray [ipadd] . '<br>';
-				echo $sumarray [submask] . '<br>';
-				echo $sumarray [macaddress] . '<br>';
-				echo $sumarray [hostname] . '<br>';
-				echo $sumarray [opersys] . '<br>';
-				echo $sumarray [displaytype] . '<br>';
-				echo $sumarray [displaysize] . '<br>';
-				echo $sumarray [displaygraphic] . '<br>';
-				echo $sumarray [udid] . '<br>';
-				echo $sumarray [imei] . '<br>';
-				echo $sumarray [iccid] . '<br>';
-				echo $sumarray [conphone] . '<br>';
+
 
 				if (empty ( $numrow )) {
 
