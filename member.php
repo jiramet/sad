@@ -44,7 +44,7 @@
 	echo fperurl($_GET['f'], 'add', '', 'เพิ่มสมาชิค', $wurl3->mp_aper);
 	echo fperurl('title', '', '', 'เพิ่มคำนำหน้าชื่อ', '');
 	echo fperurl('gro', '', '', 'เพิ่มแผนก', '');
-?>  
+?>
 </div>
 <table width="95%" border="0" cellspacing="5" cellpadding="5">
     <tr>
@@ -57,9 +57,9 @@
     </tr>
     <tr>
         <td><div align="center">
-        
+
  <!-- เริ่มสร้างตาราง  โดยใช้คำสั่ง loop ตามค่า ที่ config ด้านบน -->
- 
+
                 <table width="<?php echo $tableallsize; ?>" style="margin-top:50px;" border="1" cellspacing="0" cellpadding="0">
                     <tr bgcolor= #00FFFF>
 <?php
@@ -83,7 +83,7 @@
 
 	} else {
 
-		//Start===================คำนวนการแบ่างหน้า===============================(ไม่ต้องแก้ไข)	
+		//Start===================คำนวนการแบ่างหน้า===============================(ไม่ต้องแก้ไข)
 		// Get All filed Data...
 		$all_data = $db->rows($db->query("SELECT * FROM " . $dbcp . " WHERE 1"));
 		// Page Control
@@ -102,9 +102,9 @@
 		if ($all_data % $number_per_page)
 			$all_page++;
 
-		//End===================จบการคำนวนการแบ่งหน้า============================		
+		//End===================จบการคำนวนการแบ่งหน้า============================
 
-		//Start==================ตรวจสอบว่าไม่มีคำที่ต้องการค้นหา ให้เริ่มตรงนี้==============(ไม่ต้องแก้ไข)	
+		//Start==================ตรวจสอบว่าไม่มีคำที่ต้องการค้นหา ให้เริ่มตรงนี้==============(ไม่ต้องแก้ไข)
 
 		$Query = $db->query("	SELECT * FROM " . $dbcp . " ORDER BY " . $value[1] . " ASC LIMIT {$start},{$number_per_page}"); //สร้างตาราง
 
@@ -136,9 +136,9 @@
 <?php
 		}
 	} else {
-?>	
+?>
                         <tr>
-                            <td colspan="2" class="center">ไม่พบรายการสมาชิก</td>  
+                            <td colspan="2" class="center">ไม่พบรายการสมาชิก</td>
                         </tr>
 <?php } ?>
 <?php //end =================จบการแสดงตาราง========================== ?>
@@ -171,7 +171,7 @@
                 <div class="center">
                     <div align="center" id="showdata">
                         <table width="500" border="1" cellspacing="0" cellpadding="0">
-                            <tr> 
+                            <tr>
                                 <td colspan="2"><div align="center"><a name="link1">ข้อมูลสมาชิก</a></div></td>
                             </tr>
                             <tr>
@@ -228,7 +228,7 @@
 		echo finwebper($_GET['f'], $_GET['action']);
 ?>
             <div align="center">
-    				 <form name="form2" method="post" action="index.php?f=<?php echo $_GET[f];?>&action=saveadd"> 
+    				 <form name="form2" method="post" action="index.php?f=<?php echo $_GET[f];?>&action=saveadd">
                     <table width="500" border="0" cellspacing="5" cellpadding="5">
                         <tr>
                             <td colspan="2"><div align="center"><a name="link1">กรอกข้อมูลสมาชิก</a></div></td>
@@ -287,8 +287,8 @@
 			echo '<option value="' . $p->gp_id . '"> ' . $p->gp_name . '</option>';
 		}
 ?>
-                                </select>      
-                           </td>                                     
+                                </select>
+                           </td>
                         </tr>
                         <tr>
                             <td><div align="right">เบอร์โทรศัพท์</div></td>
@@ -344,7 +344,7 @@
 			$t = $db->fetch($db->query("SELECT * FROM " . _TITLE . " WHERE t_id =  ' " . $m->m_title . " '  "));
 ?>
                 <div align="center">
-                       <form name="form3" method="post" action="index.php?f=<?php echo $_GET[f];?>&action=saveedit&id=<?php echo $id; ?>"> 
+                       <form name="form3" method="post" action="index.php?f=<?php echo $_GET[f];?>&action=saveedit&id=<?php echo $id; ?>">
                         <table width="500" border="0" cellspacing="5" cellpadding="5">
                             <tr>
                                 <td colspan="2"><div align="center"><a name="link1">กรอกข้อมูลสมาชิก</a></div></td>
@@ -399,7 +399,7 @@
 ?>
                                     </select>      </td>
                             </tr>
-                            
+
                              <tr>
                                 <td width="109"><div align="right">Permission Group</div></td>
                                 <td width="456"><select name="<?php echo $value[9];?>" id="<?php echo $value[9];?>">
@@ -417,7 +417,7 @@
 ?>
                                     </select>      </td>
                             </tr>
-                            
+
                             <tr>
                                 <td><div align="right">เบอร์โทรศัพท์</div></td>
                                 <td><input name="<?php echo $value[10];?>" type="text" id="<?php echo $value[10];?>" value="<?php echo $m->$value[10]; ?>" size="50"></td>
