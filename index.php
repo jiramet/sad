@@ -42,7 +42,7 @@
                             ul
                         </style>
                         <div class="menu">
-                            <ul>	
+                            <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <?php
 	if ($_SESSION[login] == "admin") {
@@ -51,11 +51,11 @@
 		if ($sum) {
 			while ($url = $db->fetch($qmenu)) {
 				//$qumenu=$db->query("SELECT * FROM"._WURL."WHERE w_id =".$url->mp_wid);
-				//$purl=$db->fetch($qumenu);	
+				//$purl=$db->fetch($qumenu);
 				//$purl=$db->fetch($db->query("SELECT * FROM"._WURL."WHERE w_id = ".$url->mp_wid));
 				$purl = $db->fetch($db->query("SELECT * FROM " . _WURL . " WHERE w_id =  ' " . $url->mp_wid . " ' and w_status = 1  "));
 				if (!$purl == '') {
-?>	  	
+?>
                                                 <li><a href="index.php?f=<?php echo $purl->w_url; ?>"><?php echo $purl->w_nmenu; ?></a></li>
 
                                                 <?php
@@ -87,7 +87,7 @@
 	} else {
 	echo '<center><h1>รายงานระบบ งานแจ้งซอม  และ แจ้งซื้อ ให้ User ทุกคนรับรู้ </h1></center>';
 	}
-?>	  
+?>
                         </div>
 
                     </td>
