@@ -49,7 +49,7 @@
 		$qmenu = $db->query("	SELECT * FROM " . _MPER . "	WHERE mp_mid = " . $_SESSION["gpid"] . " and mp_wper = 1 ");
 		$sum = $db->rows($qmenu);
 		if ($sum) {
-			while ($url = $db->fetch($qmenu)) {
+			while ($url == $db->fetch($qmenu)) {
 				//$qumenu=$db->query("SELECT * FROM"._WURL."WHERE w_id =".$url->mp_wid);
 				//$purl=$db->fetch($qumenu);
 				//$purl=$db->fetch($db->query("SELECT * FROM"._WURL."WHERE w_id = ".$url->mp_wid));
