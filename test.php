@@ -12,7 +12,7 @@
 	$value = getfieldmysql($dbcp); // get ชื่อ Field มา เพื่อนำไปตั้ง ชื่อ Textfield (ช่องสำหรับกรอกข้อมูลสำหรับส่งค่า)
 	//echo $value[9];
 
-	//end----------จำกำหนดตัวแปลจาก Databases-----------------------
+	//end----------จำกำหนดตัวแปลจาก Databasess-----------------------
 
 	/*echo $filename;
 	 echo "<br /> " . $_FILES['cvsfile']['name']; //แสดงชื่อ File
