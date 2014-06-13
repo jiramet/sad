@@ -3,7 +3,7 @@
 	echo fpermiss($_GET['f']); // ตรวจสอบสิทธิในการเข้าถึง
 	$dbcp = _HARDWARE;
 	$uploads_dir = 'csv/'; // Folder ที่จะเก็บ File
-	$filename = $_FILES['cvsfile']['name']; //เอาชื่อ File  ออกมา
+	$filename = $_FILES['cvsfile']['name']; //เอาชื่อ File  ออกมา1
 	$extension = strrchr($filename, '.'); //เอานามสกุล  ออกมา
 
 	//start------------------กำหนดตัวแปลจาก Databases-----------------------
